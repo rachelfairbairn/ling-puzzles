@@ -1,6 +1,6 @@
 .Input {
     width: 100%;
-    padding: 10px;
+    padding: 5px;
     text-align: center;
     box-sizing: border-box;
 }
@@ -13,7 +13,7 @@
 
 .InputElement {
     display: block;
-    width: 200px;
+    width: 100%;
     outline: none;
     border: 1px solid #ccc;
     background-color: white;
@@ -21,6 +21,12 @@
     padding: 6px 10px;
     box-sizing: border-box;
     margin: auto;
+    /* css 3 */
+    border-radius:5px;
+    /* mozilla */
+    -moz-border-radius:5px;
+    /* webkit */
+    -webkit-border-radius:5px;
 }
 
 .InputElement:focus {

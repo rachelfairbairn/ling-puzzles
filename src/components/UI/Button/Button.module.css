@@ -11,9 +11,12 @@
     border-radius: 5px;
 }
 
-.Button:disabled {
+.Button:disabled,
+.Button:disabled:hover {
     color: #ccc;
+    border-color: #ccc;
     cursor: not-allowed;
+    background-color: transparent;
 }
 
 .Success {
@@ -21,7 +24,27 @@
     border-color: #5C9210;
 }
 
+.Success:hover {
+    color: white;
+    background-color: #5C9210;
+}
+
 .Danger {
     color: #944317;
     border-color: #944317;
+}
+
+.Danger:hover {
+    color: white;
+    background-color: #944317;
+}
+
+.Info {
+    color: #78C2AD;
+    border-color: #78C2AD;
+}
+
+.Info:hover {
+    color: white;
+    background-color: #78C2AD;
 }

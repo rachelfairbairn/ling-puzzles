@@ -1,0 +1,35 @@
+.Modal {
+    position: fixed;
+    z-index: 500;
+    background-color: white;
+    width: 70%;
+    height: 60%;
+    box-shadow: 1px 1px 1px black;
+    
+    left: 15%;
+    top: 30%;
+    box-sizing: border-box;
+    overflow:hidden;
+    /* css 3 */
+    border-radius:5px;
+    /* mozilla */
+    -moz-border-radius:5px;
+    /* webkit */
+    -webkit-border-radius:5px;
+    /* transition: all 0.4s ease-out; */
+}
+
+.ModalInner {
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+@media (min-width: 600px) {
+    .Modal {
+        width: 500px;
+        left: calc(50% - 250px);
+    }
+}
