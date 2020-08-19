@@ -21,6 +21,10 @@ class Layout extends Component {
         });
     }
 
+    logoClickHandler = () => {
+        this.props.history.push('/');
+    }
+
    render () {
         return (
             <Aux>
