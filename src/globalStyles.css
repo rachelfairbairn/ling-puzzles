@@ -1,5 +1,6 @@
 .row {
     display: flex;
+    padding: 0px;
 }
 
 .column-50 {
@@ -8,11 +9,18 @@
 }
 
 .column-25 {
-    flex: 25%;
+    flex: 20%;
     padding: 0px 10px;
+    text-align: left;
 }
 
 .column-75 {
-    flex: 75%;
+    flex: 80%;
     padding: 0px 10px;
+}
+
+@media (min-width: 600px) {
+    .row {
+        padding: 0px 70px;
+    }
 }

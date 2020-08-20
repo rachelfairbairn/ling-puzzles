@@ -65,12 +65,44 @@ const initialState = {
         totalCorrect: 0,
         validAnswers: false,
         showScore: false
+    },
+    videoIpa: {
+        exercises: [
+            {
+                url: 'https://www.youtube.com/watch?v=FwNFlOpu9aM', 
+                answer: 'a', 
+                value: ''
+            },
+            {
+                url: 'https://www.youtube.com/watch?v=FwNFlOpu9aM', 
+                answer: 'a', 
+                value: ''
+            },
+            {
+                url: 'https://www.youtube.com/watch?v=FwNFlOpu9aM', 
+                answer: 'a', 
+                value: ''
+            },
+            {
+                url: 'https://www.youtube.com/watch?v=FwNFlOpu9aM', 
+                answer: 'a', 
+                value: ''
+            },
+            {
+                url: 'https://www.youtube.com/watch?v=FwNFlOpu9aM', 
+                answer: 'a', 
+                value: ''
+            }
+        ],
+        totalCorrect: 0,
+        validAnswers: false,
+        showScore: false
     }
 };
 
 const engIpaInputChanged = (state, action) => {
     const updatedExercise = updateObject(state.engIpa.exercises[action.inputIndex], {
-        value: action.event.target.value,
+        value: action.value,
     });
     const updatedExercises = state.engIpa.exercises.map((exercise) => {
         return {...exercise}
@@ -111,7 +143,7 @@ const engIpaCheckScore = (state, action) => {
 
 const ipaEngInputChanged = (state, action) => {
     const updatedExercise = updateObject(state.ipaEng.exercises[action.inputIndex], {
-        value: action.event.target.value,
+        value: action.value,
     });
     const updatedExercises = state.ipaEng.exercises.map((exercise) => {
         return {...exercise}
@@ -150,12 +182,55 @@ const ipaEngCheckScore = (state, action) => {
     });
 }
 
+const videoIpaInputChanged = (state, action) => {
+    const updatedExercise = updateObject(state.videoIpa.exercises[action.inputIndex], {
+        value: action.value,
+    });
+    const updatedExercises = state.videoIpa.exercises.map((exercise) => {
+        return {...exercise}
+    });
+    updatedExercises[action.inputIndex] = updatedExercise;
+
+    let validAnswers = true;
+    updatedExercises.forEach((exercise) => {
+        if(exercise.value.length === 0){
+            validAnswers = false;
+        }
+    });
+    const showScore = !validAnswers ? false : state.videoIpa.showScore;
+
+    return updateObject(state, {
+        videoIpa: updateObject(state.videoIpa, {
+            exercises: updatedExercises, 
+            validAnswers: validAnswers, 
+            showScore: showScore
+        })
+    });
+};
+
+const videoIpaCheckScore = (state, action) => {
+    let score = 0;
+    state.videoIpa.exercises.forEach((exercise) => {
+        if(exercise.value === exercise.answer){
+            score++;
+        }
+    });
+    return updateObject(state, {
+        videoIpa: updateObject(state.videoIpa, {
+            totalCorrect: score, 
+            showScore: true
+        })
+    });
+}
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.ENG_IPA_INPUT_CHANGED: return engIpaInputChanged(state, action);
         case actionTypes.ENG_IPA_CHECK_SCORE: return engIpaCheckScore(state, action);
         case actionTypes.IPA_ENG_INPUT_CHANGED: return ipaEngInputChanged(state, action);
         case actionTypes.IPA_ENG_CHECK_SCORE: return ipaEngCheckScore(state, action);
+        case actionTypes.VIDEO_IPA_INPUT_CHANGED: return videoIpaInputChanged(state, action);
+        case actionTypes.VIDEO_IPA_CHECK_SCORE: return videoIpaCheckScore(state, action);
         default: return state;
     }
 };

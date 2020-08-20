@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Aux from '../../hoc/Aux/Aux';
-import Header from '../UI/Header/Header';
 import Input from '../UI/Input/Input';
 import Button from '../UI/Button/Button';
 import Score from '../UI/Score/Score';
@@ -18,7 +17,7 @@ const fillInBlanks = (props) => {
                 <div className="column-75">
                     <Input 
                         value={props.exercises[index].value}
-                        changed={(event) => props.inputChanged(event, index)} />
+                        changed={(event) => props.inputChanged(event.target.value, index)} />
                 </div>
             </div>
         );
@@ -26,12 +25,14 @@ const fillInBlanks = (props) => {
 
     return (
         <Aux>
-            <Header type="h2">{props.title}</Header>
+            <h1>{props.title}</h1>
             <p>{props.instructions}</p>
             {exercises}
-            <Score correct={props.totalCorrect} total={Object.keys(props.exercises).length} show={props.showScore&&props.validAnswers} />
-            <Button btnType="Info" disabled={!props.validAnswers} clicked={props.checkScore}>CHECK SCORE</Button>
-            <Button btnType="Success" clicked={props.closed}>SAVE & CLOSE</Button>
+            <div style={{paddingTop:'10px'}}>
+                <Score correct={props.totalCorrect} total={Object.keys(props.exercises).length} show={props.showScore&&props.validAnswers} />
+                <Button btnType="Info" disabled={!props.validAnswers} clicked={props.checkScore}>CHECK SCORE</Button>
+                <Button btnType="Success" clicked={props.closed}>SAVE & CLOSE</Button>
+            </div>
         </Aux>
     );
 

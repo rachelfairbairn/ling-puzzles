@@ -1,0 +1,12 @@
+.VideoActivityInput {
+    width: 80%;
+    margin: auto;
+    padding-bottom: 24px;
+    padding-top: 5px
+}
+
+@media (min-width: 600px){
+    .VideoActivityInput {
+        width: 60%;
+    }
+}

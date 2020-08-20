@@ -2,5 +2,7 @@ export {
     engIpaInputChanged, 
     engIpaCheckScore,
     ipaEngInputChanged,
-    ipaEngCheckScore
+    ipaEngCheckScore,
+    videoIpaInputChanged,
+    videoIpaCheckScore
  } from './phonetics';
