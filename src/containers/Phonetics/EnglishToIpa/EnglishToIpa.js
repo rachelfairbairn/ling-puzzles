@@ -11,33 +11,33 @@ import { updateObject } from '../../../utils/utils';
 class EnglishToIpa extends Component {
 
     state = {
-        questions: {
-            1: {
+        questions: [
+            {
                 given: 'Beet', 
                 answer: 'a', 
                 value: ''
             },
-            2: {
+            {
                 given: 'Bit', 
                 answer: 'a', 
                 value: ''
             },
-            3: {
+            {
                 given: 'Bet', 
                 answer: 'a', 
                 value: ''
             },
-            4: {
+            {
                 given: 'Bait', 
                 answer: 'a', 
                 value: ''
             },
-            5: {
+            {
                 given: 'Boot', 
                 answer: 'a', 
                 value: ''
             }
-        },
+        ],
         validAnswers: false,
         showScore: false,
         totalCorrect: 0
@@ -47,37 +47,37 @@ class EnglishToIpa extends Component {
         const updatedQuestion = updateObject(this.state.questions[index], {
             value: event.target.value,
         });
-        const updatedQuestions = updateObject(this.state.questions, {
-            [index]: updatedQuestion
+        const updatedQuestions = this.state.questions.map((question) => {
+            return {...question}
         });
+        updatedQuestions[index] = updatedQuestion;
 
         let validAnswers = true;
-        let showScore = this.state.showScore;
         for(let i in updatedQuestions){
             if(updatedQuestions[i].value.length === 0){
                 validAnswers = false;
-                showScore = false;
                 break;
             }
         }
+        const showScore = !validAnswers ? false : this.state.showScore;
 
         this.setState({questions: updatedQuestions, validAnswers: validAnswers, showScore: showScore});
     }
 
     checkScoreHandler = () => {
         let score = 0;
-        for(let question in this.state.questions){
+        this.state.questions.forEach((question) => {
             if(question.value === question.answer){
                 score++;
             }
-        }
+        });
         this.setState({totalCorrect: score, showScore: true});
     }
 
     render () {
         const questions = Object.keys(this.state.questions).map((index) => {
             return (
-                <div className="row">
+                <div className="row" key={index}>
                     <div className="column-25">
                         <p>{this.state.questions[index].given}</p>
                     </div>
@@ -96,9 +96,9 @@ class EnglishToIpa extends Component {
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
                     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 {questions}
+                <Score correct={this.state.totalCorrect} total={Object.keys(this.state.questions).length} show={this.state.showScore&&this.state.validAnswers} />
                 <Button btnType="Info" disabled={!this.state.validAnswers} clicked={this.checkScoreHandler}>CHECK SCORE</Button>
                 <Button btnType="Success" clicked={this.props.closed}>SAVE & CLOSE</Button>
-                <Score correct={this.state.totalCorrect} total={Object.keys(this.state.questions).length} show={this.state.showScore&&this.state.validAnswers} />
             </Aux>
         );
     }

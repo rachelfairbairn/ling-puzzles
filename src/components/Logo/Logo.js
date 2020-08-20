@@ -1,10 +1,14 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
+
 import lingLogo from '../../resources/images/ling-puzzles-logo.png';
 import classes from './Logo.module.css';
 
 const logo = (props) => (
     <div className={classes.Logo}>
-        <img src={lingLogo} alt="LingPuzzles" />
+        <NavLink to="/">
+            <img src={lingLogo} alt="LingPuzzles" />
+        </NavLink>
     </div>
 );
 
