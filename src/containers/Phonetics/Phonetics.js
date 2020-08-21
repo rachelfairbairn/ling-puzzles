@@ -28,10 +28,16 @@ class Phonetics extends Component {
         this.setState({[exerciseName]: true});
     }
 
+    componentDidMount() {
+        if(this.props.engIpaExercises.length === 0){
+            this.props.loadExercises();
+        }
+    }
+
     render () {
         return (
             <div className={classes.Phonetics}>
-                <Header type="h1">Phonetics Puzzles</Header>
+                <Header type="h1">Phonetics Activity</Header>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
                     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
@@ -58,7 +64,8 @@ class Phonetics extends Component {
                         validAnswers={this.props.engIpaValidAnswers}
                         showScore={this.props.engIpaShowScore}
                         inputChanged={this.props.onEngIpaInputChanged}
-                        checkScore={this.props.onEngIpaCheckScore} />
+                        checkScore={this.props.onEngIpaCheckScore}
+                        showAnswers={this.props.showAnswers} />
                 </Modal>  
                 <Modal 
                     show={this.state.ipaToEnglish} 
@@ -73,7 +80,8 @@ class Phonetics extends Component {
                         validAnswers={this.props.ipaEngValidAnswers}
                         showScore={this.props.ipaEngShowScore}
                         inputChanged={this.props.onIpaEngInputChanged}
-                        checkScore={this.props.onIpaEngCheckScore} />
+                        checkScore={this.props.onIpaEngCheckScore}
+                        showAnswers={this.props.showAnswers} />
                 </Modal>
                 <Modal 
                     show={this.state.videoToIPA} 
@@ -88,7 +96,8 @@ class Phonetics extends Component {
                         validAnswers={this.props.videoIpaValidAnswers}
                         showScore={this.props.videoIpaShowScore}
                         inputChanged={this.props.onVideoIpaInputChanged}
-                        checkScore={this.props.onVideoIpaCheckScore} />
+                        checkScore={this.props.onVideoIpaCheckScore}
+                        showAnswers={this.props.showAnswers} />
                 </Modal>
             </div>
         );
@@ -97,18 +106,19 @@ class Phonetics extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        engIpaExercises: state.engIpa.exercises,
-        engIpaTotalCorrect: state.engIpa.totalCorrect,
-        engIpaValidAnswers: state.engIpa.validAnswers,
-        engIpaShowScore: state.engIpa.showScore,
-        ipaEngExercises: state.ipaEng.exercises,
-        ipaEngTotalCorrect: state.ipaEng.totalCorrect,
-        ipaEngValidAnswers: state.ipaEng.validAnswers,
-        ipaEngShowScore: state.ipaEng.showScore,
-        videoIpaExercises: state.videoIpa.exercises,
-        videoIpaTotalCorrect: state.videoIpa.totalCorrect,
-        videoIpaValidAnswers: state.videoIpa.validAnswers,
-        videoIpaShowScore: state.videoIpa.showScore
+        engIpaExercises: state.phonetics.engIpa.exercises,
+        engIpaTotalCorrect: state.phonetics.engIpa.totalCorrect,
+        engIpaValidAnswers: state.phonetics.engIpa.validAnswers,
+        engIpaShowScore: state.phonetics.engIpa.showScore,
+        ipaEngExercises: state.phonetics.ipaEng.exercises,
+        ipaEngTotalCorrect: state.phonetics.ipaEng.totalCorrect,
+        ipaEngValidAnswers: state.phonetics.ipaEng.validAnswers,
+        ipaEngShowScore: state.phonetics.ipaEng.showScore,
+        videoIpaExercises: state.phonetics.videoIpa.exercises,
+        videoIpaTotalCorrect: state.phonetics.videoIpa.totalCorrect,
+        videoIpaValidAnswers: state.phonetics.videoIpa.validAnswers,
+        videoIpaShowScore: state.phonetics.videoIpa.showScore,
+        showAnswers: state.phonetics.showPhoneticsAnswers
     };
 };
 
@@ -119,7 +129,8 @@ const mapDispatchToProps = (dispatch) => {
         onIpaEngInputChanged: (value, inputIndex) => dispatch(actions.ipaEngInputChanged(value, inputIndex)),
         onIpaEngCheckScore: () => dispatch(actions.ipaEngCheckScore()),
         onVideoIpaInputChanged: (value, inputIndex) => dispatch(actions.videoIpaInputChanged(value, inputIndex)),
-        onVideoIpaCheckScore: () => dispatch(actions.videoIpaCheckScore())
+        onVideoIpaCheckScore: () => dispatch(actions.videoIpaCheckScore()),
+        loadExercises: () => dispatch(actions.loadExercises())
     };
 };
 

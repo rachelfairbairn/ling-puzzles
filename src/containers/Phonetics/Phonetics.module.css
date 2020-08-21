@@ -1,3 +1,10 @@
 .Phonetics {
-    margin: 20px;
+    margin: auto;
+    width: 80%;
+}
+
+@media (min-width: 900px){
+    .Phonetics{
+        width: 720px;
+    }
 }

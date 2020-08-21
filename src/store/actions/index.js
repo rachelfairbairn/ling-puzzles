@@ -1,8 +1,14 @@
 export { 
+    loadExercises,
     engIpaInputChanged, 
     engIpaCheckScore,
     ipaEngInputChanged,
     ipaEngCheckScore,
     videoIpaInputChanged,
-    videoIpaCheckScore
+    videoIpaCheckScore,
+    togglePhoneticsAnswers
  } from './phonetics';
+
+ export {
+     auth
+ } from './auth';

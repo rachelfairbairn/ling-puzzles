@@ -12,12 +12,13 @@ const fillInBlanks = (props) => {
         return (
             <div className="row" key={index}>
                 <div className="column-25">
-                    <p>{props.exercises[index].given}</p>
+                    <p>{props.exercises[index].question}</p>
                 </div>
                 <div className="column-75">
                     <Input 
                         value={props.exercises[index].value}
-                        changed={(event) => props.inputChanged(event.target.value, index)} />
+                        changed={(event) => props.inputChanged(event.target.value, index)}
+                        disabled={props.showAnswers} />
                 </div>
             </div>
         );
@@ -29,8 +30,8 @@ const fillInBlanks = (props) => {
             <p>{props.instructions}</p>
             {exercises}
             <div style={{paddingTop:'10px'}}>
-                <Score correct={props.totalCorrect} total={Object.keys(props.exercises).length} show={props.showScore&&props.validAnswers} />
-                <Button btnType="Info" disabled={!props.validAnswers} clicked={props.checkScore}>CHECK SCORE</Button>
+                <Score correct={props.totalCorrect} total={props.exercises.length} show={props.showScore&&props.validAnswers} />
+                <Button btnType="Info" disabled={!props.validAnswers&&props.showAnswers} clicked={props.checkScore}>CHECK SCORE</Button>
                 <Button btnType="Success" clicked={props.closed}>SAVE & CLOSE</Button>
             </div>
         </Aux>

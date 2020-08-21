@@ -9,7 +9,8 @@ const input = (props) => {
                 className={classes.InputElement}
                 type="text" 
                 value={props.value} 
-                onChange={props.changed} />
+                onChange={props.changed}
+                disabled={props.disabled} />
         </div>
     );
 };

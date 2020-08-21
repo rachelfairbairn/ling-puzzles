@@ -12,11 +12,12 @@ const videoActivity = (props) => {
     const exercises = Object.keys(props.exercises).map((index) => {
         return (
             <div key={index}>
-                <ResponsivePlayer url={props.exercises[index].url}/>
+                <ResponsivePlayer url={props.exercises[index].question}/>
                 <div className={classes.VideoActivityInput}>
                     <Input 
                         value={props.exercises[index].value}
                         changed={(event) => props.inputChanged(event.target.value, index)}
+                        disabled={props.showAnswers}
                      />
                 </div>
             </div>
@@ -28,8 +29,8 @@ const videoActivity = (props) => {
             <h1>{props.title}</h1>
             <p>{props.instructions}</p>
             {exercises}
-            <Score correct={props.totalCorrect} total={Object.keys(props.exercises).length} show={props.showScore&&props.validAnswers} />
-            <Button btnType="Info" disabled={!props.validAnswers} clicked={props.checkScore}>CHECK SCORE</Button>
+            <Score correct={props.totalCorrect} total={props.exercises.length} show={props.showScore&&props.validAnswers} />
+            <Button btnType="Info" disabled={!props.validAnswers&&props.showAnswers} clicked={props.checkScore}>CHECK SCORE</Button>
             <Button btnType="Success" clicked={props.closed}>SAVE & CLOSE</Button>
         </Aux>
     );

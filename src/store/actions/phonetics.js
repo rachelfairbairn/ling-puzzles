@@ -1,4 +1,5 @@
 import * as actionTypes from './actionTypes';
+import axios from '../../axios';
 
 export const engIpaInputChanged = (val, inputIndex) => {
     return {
@@ -39,5 +40,31 @@ export const videoIpaInputChanged = (val, inputIndex) => {
 export const videoIpaCheckScore = () => {
     return {
         type: actionTypes.VIDEO_IPA_CHECK_SCORE
+    };
+};
+
+export const loadExercisesSuccess = (exercises) => {
+    return {
+        type: actionTypes.LOAD_EXERCISES_SUCCESS,
+        exercises: exercises
+    };
+};
+
+export const loadExercises = () => {
+    return dispatch => {
+        axios.get('/phonetics.json')
+        .then(res => {
+            console.log(res.data);
+            dispatch(loadExercisesSuccess(res.data));
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    }
+}
+
+export const togglePhoneticsAnswers = () => {
+    return {
+        type: actionTypes.TOGGLE_PHONETICS_ANSWERS
     };
 };

@@ -3,101 +3,37 @@ import { updateObject } from '../../utils/utils';
 
 const initialState = {
     engIpa: {
-        exercises: [
-            {
-                given: 'Beet', 
-                answer: 'dɪfθɑŋ', 
-                value: ''
-            },
-            {
-                given: 'Bit', 
-                answer: 'a', 
-                value: ''
-            },
-            {
-                given: 'Bet', 
-                answer: 'a', 
-                value: ''
-            },
-            {
-                given: 'Bait', 
-                answer: 'a', 
-                value: ''
-            },
-            {
-                given: 'Boot', 
-                answer: 'a', 
-                value: ''
-            }
-        ],
+        exercises: [],
         totalCorrect: 0,
         validAnswers: false,
         showScore: false
     },
     ipaEng: {
-        exercises: [
-            {
-                given: '[frɪkəɾɪv]', 
-                answer: 'a', 
-                value: ''
-            },
-            {
-                given: '[fənɛɾɪks]', 
-                answer: 'a', 
-                value: ''
-            },
-            {
-                given: '[dɪfθɑŋ]', 
-                answer: 'a', 
-                value: ''
-            },
-            {
-                given: '[ælfəbɛt]', 
-                answer: 'a', 
-                value: ''
-            },
-            {
-                given: '[vokəltɹækt]', 
-                answer: 'a', 
-                value: ''
-            }
-        ],
+        exercises: [],
         totalCorrect: 0,
         validAnswers: false,
         showScore: false
     },
     videoIpa: {
-        exercises: [
-            {
-                url: 'https://www.youtube.com/watch?v=FwNFlOpu9aM', 
-                answer: 'a', 
-                value: ''
-            },
-            {
-                url: 'https://www.youtube.com/watch?v=FwNFlOpu9aM', 
-                answer: 'a', 
-                value: ''
-            },
-            {
-                url: 'https://www.youtube.com/watch?v=FwNFlOpu9aM', 
-                answer: 'a', 
-                value: ''
-            },
-            {
-                url: 'https://www.youtube.com/watch?v=FwNFlOpu9aM', 
-                answer: 'a', 
-                value: ''
-            },
-            {
-                url: 'https://www.youtube.com/watch?v=FwNFlOpu9aM', 
-                answer: 'a', 
-                value: ''
-            }
-        ],
+        exercises: [],
         totalCorrect: 0,
         validAnswers: false,
         showScore: false
-    }
+    },
+    showPhoneticsAnswers: false
+};
+
+const loadExercisesSuccess = (state, action) => {
+    let updatedExercises = updateObject(state['engIpa'], {exercises: Object.values(action.exercises['engIpa'])});
+    let updatedState = updateObject(state, {engIpa: updatedExercises});
+
+    updatedExercises = updateObject(state['ipaEng'], {exercises: Object.values(action.exercises['ipaEng'])});
+    updatedState = updateObject(updatedState, {ipaEng: updatedExercises});
+
+    updatedExercises = updateObject(state['videoIpa'], {exercises: Object.values(action.exercises['videoIpa'])});
+    updatedState = updateObject(updatedState, {videoIpa: updatedExercises});
+
+    return updatedState;
 };
 
 const engIpaInputChanged = (state, action) => {
@@ -223,14 +159,44 @@ const videoIpaCheckScore = (state, action) => {
     });
 }
 
+const togglePhoneticsAnswers = (state, action) => {
+    let updatedState = {...state};
+    const updatedShowPhonetics = !state.showPhoneticsAnswers;
+    for(const exerciseType in state){
+        if(exerciseType === 'showPhoneticsAnswers'){
+            break;
+        }
+        let updatedExercises = [];
+        Object.values(state[exerciseType].exercises).forEach(exercise => {
+            let updatedExercise = {
+                ...exercise,
+                value: updatedShowPhonetics ? exercise.answer : ''
+            };
+            updatedExercises.push(updatedExercise);
+        });
+        let updatedExerciseType = updateObject(state[exerciseType], {
+            exercises: updatedExercises
+        });
+        updatedState = updateObject(updatedState, {
+            [exerciseType]: updatedExerciseType
+        });
+    }
+
+    return updateObject(updatedState, {
+        showPhoneticsAnswers: updatedShowPhonetics
+    });
+};
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
+        case actionTypes.LOAD_EXERCISES_SUCCESS: return loadExercisesSuccess(state, action);
         case actionTypes.ENG_IPA_INPUT_CHANGED: return engIpaInputChanged(state, action);
         case actionTypes.ENG_IPA_CHECK_SCORE: return engIpaCheckScore(state, action);
         case actionTypes.IPA_ENG_INPUT_CHANGED: return ipaEngInputChanged(state, action);
         case actionTypes.IPA_ENG_CHECK_SCORE: return ipaEngCheckScore(state, action);
         case actionTypes.VIDEO_IPA_INPUT_CHANGED: return videoIpaInputChanged(state, action);
         case actionTypes.VIDEO_IPA_CHECK_SCORE: return videoIpaCheckScore(state, action);
+        case actionTypes.TOGGLE_PHONETICS_ANSWERS: return togglePhoneticsAnswers(state, action);
         default: return state;
     }
 };
