@@ -33,11 +33,13 @@ class Layout extends Component {
                     open={this.state.showSideDrawer} 
                     closed={this.sideDrawerClosedHandler} 
                     auth={this.props.isAuthenticated} 
-                    admin={this.props.isAdmin} />
+                    admin={this.props.isAdmin}
+                    showPhoneticsAnswers={this.props.showPhoneticsAnswers} />
                 <Toolbar 
                     menuButtonClicked={this.menuButtonHandler}
                     auth={this.props.isAuthenticated} 
-                    admin={this.props.isAdmin} />
+                    admin={this.props.isAdmin}
+                    showPhoneticsAnswers={this.props.showPhoneticsAnswers} />
                 <main className={classes.Content}>
                     {this.props.children}
                 </main>
@@ -49,7 +51,8 @@ class Layout extends Component {
 const mapStateToProps = (state) => {
     return {
         isAuthenticated: state.auth.isAuthenticated,
-        isAdmin: state.auth.isAdmin
+        isAdmin: state.auth.isAdmin,
+        showPhoneticsAnswers: state.phonetics.showPhoneticsAnswers
     }
 }
 

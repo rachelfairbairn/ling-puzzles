@@ -11,11 +11,17 @@ import * as actions from '../../store/actions/index';
 class LandingPage extends Component{
      
     state = {
-        inputValue: ''
+        inputValue: '',
+        invalidPassword: false
     }
 
     inputChangedHandler = (event) => {
         this.setState({inputValue: event.target.value});
+    }
+
+    authHandler = (event) => {
+        event.preventDefault();
+        this.props.onAuth(this.state.inputValue);
     }
 
     render () {
@@ -23,15 +29,25 @@ class LandingPage extends Component{
         if(this.props.isAuthenticated){
             authRedirect = <Redirect to="/phonetics" />
         }
+
         return (
             <Aux>
                 {authRedirect}
                 <Header type="h1">Welcome to Ling Puzzles!</Header>
                 <p>Please enter the password to continue.</p>
-                <div style={{width:'200px', margin:'auto'}}>
-                    <Input value={this.state.inputValue} changed={this.inputChangedHandler} />
-                </div>
-                <Button btnType="Success" clicked={() => this.props.onAuth(this.state.inputValue)}>ENTER</Button>
+                <form onSubmit={this.authHandler}>
+                    <div style={{width:'200px', margin:'auto'}}>
+                        <Input 
+                            password
+                            value={this.state.inputValue} 
+                            changed={this.inputChangedHandler} 
+                            placeholder="password"
+                            errorMsg={this.props.errorMsg} />
+                    </div>
+                    <Button 
+                        btnType="Success" 
+                        clicked={this.authHandler}>ENTER</Button>
+                </form>
             </Aux>
         );
     }
@@ -39,7 +55,8 @@ class LandingPage extends Component{
 
 const mapStateToProps = (state) => {
     return {
-        isAuthenticated: state.auth.isAuthenticated
+        isAuthenticated: state.auth.isAuthenticated,
+        errorMsg: state.auth.errorMsg
     }
 }
 

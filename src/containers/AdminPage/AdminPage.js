@@ -7,6 +7,7 @@ import Header from '../../components/UI/Header/Header';
 import Input from '../../components/UI/Input/Input';
 import Aux from '../../hoc/Aux/Aux';
 import Button from '../../components/UI/Button/Button';
+import classes from './AdminPage.module.css';
 
 class AdminPage extends Component {
 
@@ -45,16 +46,24 @@ class AdminPage extends Component {
         return (
             <Aux>
                 <Header type="h1">Admin Page</Header>
-                <div style={{width:'200px', margin:'auto'}}>
-                    <p>Add a question</p>
+                <div className={classes.AddQuestion}>
+                    <h2>Add a question</h2>
                     <select onChange={(event) => this.inputChangedHandler(event, 'type')}>
                         <option value="engIpa">English To IPA</option>
                         <option value="ipaEng">IPA To English</option>
                         <option value="videoIpa">Video To IPA</option>
                     </select>
-                    <Input value={this.state.question} changed={(event) => this.inputChangedHandler(event, 'question')} />
-                    <Input value={this.state.answer} changed={(event) => this.inputChangedHandler(event, 'answer')} />
-                    <Button btnType="Success" clicked={() => this.addExerciseHandler(this.state.question, this.state.answer, '/phonetics/' + this.state.type)}>ADD</Button>
+                    <Input 
+                        value={this.state.question} 
+                        changed={(event) => this.inputChangedHandler(event, 'question')}
+                        placeholder="question" />
+                    <Input 
+                        value={this.state.answer} 
+                        changed={(event) => this.inputChangedHandler(event, 'answer')}
+                        placeholder="answer" />
+                    <Button 
+                        btnType="Success" 
+                        clicked={() => this.addExerciseHandler(this.state.question, this.state.answer, '/phonetics/' + this.state.type)}>ADD</Button>
                 </div>
                 <div>
                     <Button 

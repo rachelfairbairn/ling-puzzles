@@ -30,7 +30,7 @@ const videoActivity = (props) => {
             <p>{props.instructions}</p>
             {exercises}
             <Score correct={props.totalCorrect} total={props.exercises.length} show={props.showScore&&props.validAnswers} />
-            <Button btnType="Info" disabled={!props.validAnswers&&props.showAnswers} clicked={props.checkScore}>CHECK SCORE</Button>
+            <Button btnType="Info" disabled={!props.validAnswers || props.showAnswers} clicked={props.checkScore}>CHECK SCORE</Button>
             <Button btnType="Success" clicked={props.closed}>SAVE & CLOSE</Button>
         </Aux>
     );

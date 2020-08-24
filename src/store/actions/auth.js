@@ -16,12 +16,12 @@ export const authFail = (errorMsg) => {
 
 export const auth = (password) => {
     return dispatch => {
-        if(password === 'test'){
+        if(password === 'ling102'){
             dispatch(authSuccess(false));
-        } else if (password === 'admin'){
+        } else if (password === 'ladefoged'){
             dispatch(authSuccess(true));
         } else{
-            dispatch(authFail('Password was incorrect'));
+            dispatch(authFail('Password incorrect!'));
         }
     }
 }

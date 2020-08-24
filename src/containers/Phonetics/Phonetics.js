@@ -37,11 +37,19 @@ class Phonetics extends Component {
     render () {
         return (
             <div className={classes.Phonetics}>
-                <Header type="h1">Phonetics Activity</Header>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-                    nisi ut aliquip ex ea commodo consequat.</p>
+                <Header type="h1">Phonetic Transcription</Header>
+                <p style={{textAlign:'left'}}>
+                    Open this webpage to access the IPA: <a href="https://www.internationalphoneticassociation.org/IPAcharts/inter_chart_2018/IPA_2018.html" 
+                                                            target="_blank" 
+                                                            rel="noopener noreferrer">Clickable IPA Chart</a>
+                </p>
+                <ul style={{textAlign:'left'}}>
+                    <li>Click the Transcription button at the top of the page.</li>
+                    <li>Type the transcription of the word in the textbox by selecting the correct symbol from the charts.</li>
+                    <li>Then copy/paste the entire transcription into the text box.</li>
+                    <li>Transcriptions without square brackets will be marked incorrect.</li>
+                    <li>Save a PDF of your Progress page and upload it to the activity forum.</li>
+                </ul>
                 <Button 
                     btnType="Info" 
                     clicked={() => this.exerciseClickedHandler('englishToIPA')}>English &rarr; IPA</Button>
@@ -56,8 +64,7 @@ class Phonetics extends Component {
                     modalClosed={this.modalClosedHandler}>
                     <FillInBlanks 
                         title="English &rarr; IPA"
-                        instructions="Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                        instructions="Transcribe just the vowel in these words. Transcriptions without square brackets will be marked incorrect. Ex. up [ʌ]."
                         closed={this.modalClosedHandler}
                         exercises={this.props.engIpaExercises}
                         totalCorrect={this.props.engIpaTotalCorrect}
@@ -72,8 +79,7 @@ class Phonetics extends Component {
                     modalClosed={this.modalClosedHandler}>
                     <FillInBlanks 
                         title="IPA &rarr; English"
-                        instructions="Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                        instructions="Read these transcribed words and write their English spellings. Ex. [ælviləɹ] alveolar."
                         closed={this.modalClosedHandler}
                         exercises={this.props.ipaEngExercises}
                         totalCorrect={this.props.ipaEngTotalCorrect}
@@ -88,8 +94,7 @@ class Phonetics extends Component {
                     modalClosed={this.modalClosedHandler}>
                     <VideoActivity
                         title="Video &rarr; IPA"
-                        instructions="Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                        instructions="View my pronunciation of these nonsense words; transcribe them in IPA. Transcriptions without square brackets will be marked incorrect. Ex. ruppickle [ɹʌpɪkəl]."
                         closed={this.modalClosedHandler}
                         exercises={this.props.videoIpaExercises}
                         totalCorrect={this.props.videoIpaTotalCorrect}

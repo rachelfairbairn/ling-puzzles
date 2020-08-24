@@ -65,7 +65,7 @@ const engIpaInputChanged = (state, action) => {
 const engIpaCheckScore = (state, action) => {
     let score = 0;
     state.engIpa.exercises.forEach((exercise) => {
-        if(exercise.value === exercise.answer){
+        if(exercise.value.toLowerCase() === exercise.answer.toLowerCase()){
             score++;
         }
     });
@@ -106,7 +106,7 @@ const ipaEngInputChanged = (state, action) => {
 const ipaEngCheckScore = (state, action) => {
     let score = 0;
     state.ipaEng.exercises.forEach((exercise) => {
-        if(exercise.value === exercise.answer){
+        if(exercise.value.toLowerCase() === exercise.answer.toLowerCase()){
             score++;
         }
     });
@@ -147,7 +147,7 @@ const videoIpaInputChanged = (state, action) => {
 const videoIpaCheckScore = (state, action) => {
     let score = 0;
     state.videoIpa.exercises.forEach((exercise) => {
-        if(exercise.value === exercise.answer){
+        if(exercise.value.toLowerCase() === exercise.answer.toLowerCase()){
             score++;
         }
     });
@@ -175,7 +175,10 @@ const togglePhoneticsAnswers = (state, action) => {
             updatedExercises.push(updatedExercise);
         });
         let updatedExerciseType = updateObject(state[exerciseType], {
-            exercises: updatedExercises
+            exercises: updatedExercises,
+            totalCorrect: 0,
+            validAnswers: false,
+            showScore: false
         });
         updatedState = updateObject(updatedState, {
             [exerciseType]: updatedExerciseType

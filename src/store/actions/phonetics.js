@@ -54,7 +54,6 @@ export const loadExercises = () => {
     return dispatch => {
         axios.get('/phonetics.json')
         .then(res => {
-            console.log(res.data);
             dispatch(loadExercisesSuccess(res.data));
         })
         .catch(err => {
