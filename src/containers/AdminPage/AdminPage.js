@@ -36,6 +36,13 @@ class AdminPage extends Component {
         });
     }
 
+    togglePhoneticsAnswersHandler = () => {
+        axios.patch('https://ling-puzzles.firebaseio.com/phonetics.json', {showAnswers: !this.props.showPhoneticsAnswers})
+        .then(res => console.log(res.data))
+        .catch(err => console.log(err));
+        this.props.onTogglePhoneticsAnswers();
+    }
+
     inputChangedHandler(event, inputIdentifier) {
         this.setState({
             [inputIdentifier]: event.target.value
@@ -68,7 +75,7 @@ class AdminPage extends Component {
                 <div>
                     <Button 
                         btnType={this.props.showPhoneticsAnswers ? "Danger" : "Success"} 
-                        clicked={this.props.onTogglePhoneticsAnswers}>
+                        clicked={this.togglePhoneticsAnswersHandler}>
                         {this.props.showPhoneticsAnswers ? 'HIDE PHONETICS ANSWERS' : 'SHOW PHONETICS ANSWERS'}
                     </Button>
                 </div>
@@ -79,7 +86,7 @@ class AdminPage extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        showPhoneticsAnswers: state.phonetics.showPhoneticsAnswers
+        showPhoneticsAnswers: state.phonetics.showAnswers
     }
 }
 

@@ -20,7 +20,7 @@ const initialState = {
         validAnswers: false,
         showScore: false
     },
-    showPhoneticsAnswers: false
+    showAnswers: false
 };
 
 const loadExercisesSuccess = (state, action) => {
@@ -33,7 +33,7 @@ const loadExercisesSuccess = (state, action) => {
     updatedExercises = updateObject(state['videoIpa'], {exercises: Object.values(action.exercises['videoIpa'])});
     updatedState = updateObject(updatedState, {videoIpa: updatedExercises});
 
-    return updatedState;
+    return updateObject(updatedState, {showAnswers: action.exercises['showAnswers']});
 };
 
 const engIpaInputChanged = (state, action) => {
@@ -160,33 +160,8 @@ const videoIpaCheckScore = (state, action) => {
 }
 
 const togglePhoneticsAnswers = (state, action) => {
-    let updatedState = {...state};
-    const updatedShowPhonetics = !state.showPhoneticsAnswers;
-    for(const exerciseType in state){
-        if(exerciseType === 'showPhoneticsAnswers'){
-            break;
-        }
-        let updatedExercises = [];
-        Object.values(state[exerciseType].exercises).forEach(exercise => {
-            let updatedExercise = {
-                ...exercise,
-                value: updatedShowPhonetics ? exercise.answer : ''
-            };
-            updatedExercises.push(updatedExercise);
-        });
-        let updatedExerciseType = updateObject(state[exerciseType], {
-            exercises: updatedExercises,
-            totalCorrect: 0,
-            validAnswers: false,
-            showScore: false
-        });
-        updatedState = updateObject(updatedState, {
-            [exerciseType]: updatedExerciseType
-        });
-    }
-
-    return updateObject(updatedState, {
-        showPhoneticsAnswers: updatedShowPhonetics
+    return updateObject(state, {
+        showAnswers: !state.showAnswers
     });
 };
 

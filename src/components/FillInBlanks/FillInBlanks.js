@@ -16,7 +16,7 @@ const fillInBlanks = (props) => {
                 </div>
                 <div className="column-75">
                     <Input 
-                        value={props.exercises[index].value}
+                        value={props.showAnswers ? props.exercises[index].answer : props.exercises[index].value}
                         changed={(event) => props.inputChanged(event.target.value, index)}
                         disabled={props.showAnswers} />
                 </div>

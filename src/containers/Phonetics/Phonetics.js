@@ -123,7 +123,7 @@ const mapStateToProps = (state) => {
         videoIpaTotalCorrect: state.phonetics.videoIpa.totalCorrect,
         videoIpaValidAnswers: state.phonetics.videoIpa.validAnswers,
         videoIpaShowScore: state.phonetics.videoIpa.showScore,
-        showAnswers: state.phonetics.showPhoneticsAnswers
+        showAnswers: state.phonetics.showAnswers
     };
 };
 
