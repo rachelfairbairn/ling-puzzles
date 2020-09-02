@@ -30,8 +30,8 @@ const fillInBlanks = (props) => {
             <p>{props.instructions}</p>
             {exercises}
             <div style={{paddingTop:'10px'}}>
-                <Score correct={props.totalCorrect} total={props.exercises.length} show={props.showScore&&props.validAnswers} />
-                <Button btnType="Info" disabled={!props.validAnswers || props.showAnswers} clicked={props.checkScore}>CHECK SCORE</Button>
+                <Score correct={props.totalCorrect} total={props.exercises.length} show={props.showScore} />
+                <Button btnType="Info" disabled={props.showAnswers} clicked={props.checkScore}>CHECK SCORE</Button>
                 <Button btnType="Success" clicked={props.closed}>SAVE & CLOSE</Button>
             </div>
         </Aux>

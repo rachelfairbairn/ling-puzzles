@@ -49,21 +49,22 @@ class Phonetics extends Component {
                     <li>Then copy/paste the entire transcription into the text box.</li>
                     <li>Transcriptions without square brackets will be marked incorrect.</li>
                     <li>Save a PDF of your Progress page and upload it to the activity forum.</li>
+                    <li style={{color:'red'}}>Closing or refreshing the page will clear your entries.</li>
                 </ul>
                 <Button 
                     btnType="Info" 
-                    clicked={() => this.exerciseClickedHandler('englishToIPA')}>English &rarr; IPA</Button>
+                    clicked={() => this.exerciseClickedHandler('englishToIPA')}>Activity 1</Button>
                 <Button 
                     btnType="Info" 
-                    clicked={() => this.exerciseClickedHandler('ipaToEnglish')}>IPA &rarr; English</Button>
+                    clicked={() => this.exerciseClickedHandler('ipaToEnglish')}>Activity 2</Button>
                 <Button 
                     btnType="Info" 
-                    clicked={() => this.exerciseClickedHandler('videoToIPA')}>Video &rarr; IPA</Button>
+                    clicked={() => this.exerciseClickedHandler('videoToIPA')}>Activity 3</Button>
                 <Modal 
                     show={this.state.englishToIPA} 
                     modalClosed={this.modalClosedHandler}>
                     <FillInBlanks 
-                        title="English &rarr; IPA"
+                        title="Transcribing American English Vowels"
                         instructions="Transcribe just the vowel in these words. Transcriptions without square brackets will be marked incorrect. Ex. up [ʌ]."
                         closed={this.modalClosedHandler}
                         exercises={this.props.engIpaExercises}
@@ -78,7 +79,7 @@ class Phonetics extends Component {
                     show={this.state.ipaToEnglish} 
                     modalClosed={this.modalClosedHandler}>
                     <FillInBlanks 
-                        title="IPA &rarr; English"
+                        title="Reverse Transcription"
                         instructions="Read these transcribed words and write their English spellings. Ex. [ælviləɹ] alveolar."
                         closed={this.modalClosedHandler}
                         exercises={this.props.ipaEngExercises}
@@ -93,7 +94,7 @@ class Phonetics extends Component {
                     show={this.state.videoToIPA} 
                     modalClosed={this.modalClosedHandler}>
                     <VideoActivity
-                        title="Video &rarr; IPA"
+                        title="Transcribing by ear: American English sounds"
                         instructions="View my pronunciation of these nonsense words; transcribe them in IPA. Transcriptions without square brackets will be marked incorrect. Ex. ruppickle [ɹʌpɪkəl]."
                         closed={this.modalClosedHandler}
                         exercises={this.props.videoIpaExercises}
