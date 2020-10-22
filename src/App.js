@@ -1,26 +1,51 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import classes from './App.module.css';
+import Layout from './hoc/Layout/Layout';
+import LandingPage from './containers/LandingPage/LandingPage';
+import Phonetics from './containers/Phonetics/Phonetics';
+import ActivityProgress from './containers/ActivityProgress/ActivityProgress';
+import AdminPage from './containers/AdminPage/AdminPage';
+
+class App extends Component {
+
+  render() {
+
+    let routes = (
+      <Switch>
+        <Route path="/phonetics" component={Phonetics} />
+        <Route path="/progress" component={ActivityProgress} />
+        <Route path="/admin" component={AdminPage} />
+        <Route path="/" exact component={LandingPage} />
+        <Redirect to="/" />
+      </Switch>
+    );
+
+    if(!this.props.isAuth){
+      routes = (
+        <Switch>
+          <Route path="/" exact component={LandingPage} />
+          <Redirect to="/" />
+        </Switch>
+      );
+    }
+
+    return (
+      <div className={classes.App}>
+        <Layout>
+          {routes}
+        </Layout>
+      </div>
+    );
+  }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    isAuth: state.auth.isAuthenticated
+  }
+}
+
+export default connect(mapStateToProps)(App);

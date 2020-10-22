@@ -1,0 +1,18 @@
+.Score {
+    display: inline-block;
+    font-weight: bold;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 8px;
+    margin: 8px;
+}
+
+.Correct {
+    color: #5C9210;
+    border-color: #5C9210;
+}
+
+.Wrong {
+    color: #944317;
+    border-color: #944317;
+}
