@@ -45,10 +45,11 @@ class Phonetics extends Component {
                 </p>
                 <ul style={{textAlign:'left'}}>
                     <li>Click the Transcription button at the top of the page.</li>
-                    <li>Type the transcription of the word in the textbox by selecting the correct symbol from the charts.</li>
-                    <li>Then copy/paste the entire transcription into the text box.</li>
+                    <li>Type the transcription of the word into the transcription box by selecting the correct symbol from the charts.</li>
+                    <li>Then copy/paste the entire transcription into the answer field.</li>
                     <li>Transcriptions without square brackets will be marked incorrect.</li>
-                    <li>Save a PDF of your Progress page and upload it to the activity forum.</li>
+                    <li>You may want to record or screenshot your answers in order to compare with the answer key when it's released.</li>
+                    <li>Save a PDF of your scores on the Progress page and upload it to the activity forum.</li>
                     <li style={{color:'red'}}>Closing or refreshing the page will clear your entries.</li>
                 </ul>
                 <Button 

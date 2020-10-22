@@ -27,20 +27,14 @@ class ActivityProgress extends Component {
                         <p style={{display: 'inline-block', fontWeight: 'bold'}}>Activity 3: </p>
                         <Score correct={this.props.videoIpaTotalCorrect} total={this.props.videoIpaExercises.length} show />
                     </div>
-                    <PDFDownloadLink 
+                    {/* <PDFDownloadLink 
                         document={<Pdf engIpaExercises={this.props.engIpaExercises}
                                         ipaEngExercises={this.props.ipaEngExercises}
                                         videoIpaExercises={this.props.videoIpaExercises} />} 
                         fileName="phoneticsAnswers.pdf">
                         {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download your answers')}
-                    </PDFDownloadLink>
-                    
+                    </PDFDownloadLink> */}
                 </div>
-                {/* <PDFViewer>
-                        <Pdf engIpaExercises={this.props.engIpaExercises}
-                                        ipaEngExercises={this.props.ipaEngExercises}
-                                        videoIpaExercises={this.props.videoIpaExercises} />
-                </PDFViewer> */}
             </Aux>
         );
     }
