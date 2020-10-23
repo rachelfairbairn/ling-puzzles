@@ -6,6 +6,7 @@ import classes from './App.module.css';
 import Layout from './hoc/Layout/Layout';
 import LandingPage from './containers/LandingPage/LandingPage';
 import Phonetics from './containers/Phonetics/Phonetics';
+import Morphology from './containers/Morphology/Morphology';
 import ActivityProgress from './containers/ActivityProgress/ActivityProgress';
 import AdminPage from './containers/AdminPage/AdminPage';
 
@@ -16,6 +17,7 @@ class App extends Component {
     let routes = (
       <Switch>
         <Route path="/phonetics" component={Phonetics} />
+        <Route path="/morphology" component={Morphology} />
         <Route path="/progress" component={ActivityProgress} />
         <Route path="/admin" component={AdminPage} />
         <Route path="/" exact component={LandingPage} />

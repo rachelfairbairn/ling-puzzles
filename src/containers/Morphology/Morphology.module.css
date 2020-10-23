@@ -1,0 +1,20 @@
+.Morphology {
+    margin: auto;
+    width: 80%;
+}
+
+.LanguageCard {
+    display: inline-block;
+    margin: 8px;
+    width: 200px;
+}
+
+.Flag {
+    width: 100%;
+}
+
+@media (min-width: 800px){
+    .Morphology{
+        width: 600px;
+    }
+}
