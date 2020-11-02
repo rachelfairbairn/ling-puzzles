@@ -35,6 +35,17 @@ class ActivityProgress extends Component {
                         {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download your answers')}
                     </PDFDownloadLink> */}
                 </div>
+                <div className={classes.SubjectProgress}>
+                    <h2 style={{marginTop:'0px'}}>Morphology</h2>
+                    <div>
+                        <p style={{display: 'inline-block', fontWeight: 'bold'}}>{this.props.langOne.name}: </p>
+                        <Score correct={this.props.langOne.totalCorrect} total={this.props.langOne.exercises.length} show />
+                    </div>
+                    <div>
+                        <p style={{display: 'inline-block', fontWeight: 'bold'}}>{this.props.langTwo.name}: </p>
+                        <Score correct={this.props.langTwo.totalCorrect} total={this.props.langTwo.exercises.length} show />
+                    </div>
+                </div>
             </Aux>
         );
     }
@@ -47,7 +58,9 @@ const mapStateToProps = (state) => {
         ipaEngExercises: state.phonetics.ipaEng.exercises,
         ipaEngTotalCorrect: state.phonetics.ipaEng.totalCorrect,
         videoIpaExercises: state.phonetics.videoIpa.exercises,
-        videoIpaTotalCorrect: state.phonetics.videoIpa.totalCorrect
+        videoIpaTotalCorrect: state.phonetics.videoIpa.totalCorrect,
+        langOne: state.morphology.langOne,
+        langTwo: state.morphology.langTwo
     };
 };
 

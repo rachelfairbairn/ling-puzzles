@@ -1,24 +1,36 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import classes from './Morphology.module.css';
-import philippinesFlagPath from '../../resources/images/philippines-flag-square-medium.png';
-import iraqFlagPath from '../../resources/images/iraq-flag-square-medium.png';
+import * as actions from '../../store/actions/index';
+
+import southAfricaFlagPath from '../../resources/images/south-africa-flag-square-medium.png';
+import philippinesFlag from '../../resources/images/philippines-flag-square-medium.png';
 
 import Header from '../../components/UI/Header/Header';
 import Button from '../../components/UI/Button/Button';
 import Modal from '../../components/UI/Modal/Modal';
+import ExampleData from '../../components/ExampleData/ExampleData';
+import QuestionAndFill from '../../components/QuestionAndFill/QuestionAndFill';
+import ModalButtons from '../../components/ModalButtons/ModalButtons';
 
 class Morphology extends Component {
-
+    
     state = {
-        agta: false,
-        kurdish: false
+        showLangOne: false,
+        showLangTwo: false
+    }
+
+    componentDidMount() {
+        if(this.props.langOne.exercises.length === 0){
+            this.props.loadMorphologyData();
+        }
     }
 
     modalClosedHandler = () => {
         this.setState({
-            agta: false,
-            kurdish: false
+            showLangOne: false,
+            showLangTwo: false,
         });
     }
 
@@ -27,72 +39,110 @@ class Morphology extends Component {
     }
 
     render () {
+
+        // let languages = {cebuano, zulu, samoan, italian, turkish, chickasaw}
+
         return (
             <div className={classes.Morphology}>
                 <Header type="h1">Morphology</Header>
                 <ul style={{textAlign:'left'}}>
-                    <li>Click the Transcription button at the top of the page.</li>
-                    <li>Type the transcription of the word into the transcription box by selecting the correct symbol from the charts.</li>
-                    <li>Then copy/paste the entire transcription into the answer field.</li>
+                    <li>For each puzzle below, examine the data given and answer the questions.  
+                        When asked for an individual morpheme, if the answer is a bound morpheme such as prefix, 
+                        suffix, infix, or bound root, do not include the hyphens. The program will mark it as incorrect. 
+                        For example, if asked to give the agentive suffix in English, your answer would be “er”, 
+                        instead of “-er”.    Exercises adapted from Fromkin, Rodman and Hyams, 2017. 
+                        An Introduction to Language. 11e. Cengage.</li>
                     <li>You may want to record or screenshot your answers in order to compare with the answer key when it's released.</li>
                     <li>Save a PDF of your scores on the Progress page and upload it to the activity forum.</li>
                     <li style={{color:'red'}}>Closing or refreshing the page will clear your entries.</li>
                 </ul>
+
                 <div className={classes.LanguageCard}>
                     <Button 
-                        btnType="Flag"
-                        clicked={() => this.exerciseClickedHandler('agta')}>
-                        <img 
-                        className={classes.Flag} 
-                        src={philippinesFlagPath}
-                        alt="philippines flag" />
-                        <br/>Agta
-                        </Button>
+                        btnType="Img"
+                        clicked={() => this.exerciseClickedHandler('showLangOne')}>
+                        <img style={{width:"100%"}} src={southAfricaFlagPath} alt="south african flag" />
+                        <br/>{this.props.langOne.name}
+                    </Button>
                 </div>
                 <div className={classes.LanguageCard}>
                     <Button 
-                        btnType="Flag"
-                        clicked={() => this.exerciseClickedHandler('kurdish')}>
-                        <img 
-                        className={classes.Flag} 
-                        src={iraqFlagPath}
-                        alt="iraq flag" />
-                        <br/>Kurmanji Kurdish
-                        </Button>
+                        btnType="Img"
+                        clicked={() => this.exerciseClickedHandler('showLangTwo')}>
+                        <img style={{width:"100%"}} src={philippinesFlag} alt="philippines flag" />
+                        <br/>{this.props.langTwo.name}
+                    </Button>
                 </div>
+                
                 <Modal 
-                    show={this.state.agta} 
+                    show={this.state.showLangOne} 
                     modalClosed={this.modalClosedHandler}>
-                    {/* <FillInBlanks 
-                        title="Transcribing American English Vowels"
-                        instructions="Transcribe just the vowel in these words. Transcriptions without square brackets will be marked incorrect. Ex. up [ʌ]."
+                    <h1>{this.props.langOne.name}</h1>
+                    <h3>{this.props.langOne.languageFamily}</h3>
+                    <p>{this.props.langOne.instructions}</p>
+                    <ExampleData exampleData={this.props.langOne.exampleData} />
+                    <QuestionAndFill 
+                        exerciseTask1={this.props.langOne.task1}
+                        exerciseTask2={this.props.langOne.task2}
+                        startIndex={this.props.langOne.reverseTranscriptionStartIndex}
+                        exercises={this.props.langOne.exercises}
+                        inputChanged={this.props.onMorphologyInputChanged}
+                        showAnswers={this.props.showAnswers}
+                        lang="langOne" />
+                    <ModalButtons
                         closed={this.modalClosedHandler}
-                        exercises={this.props.engIpaExercises}
-                        totalCorrect={this.props.engIpaTotalCorrect}
-                        validAnswers={this.props.engIpaValidAnswers}
-                        showScore={this.props.engIpaShowScore}
-                        inputChanged={this.props.onEngIpaInputChanged}
-                        checkScore={this.props.onEngIpaCheckScore}
-                        showAnswers={this.props.showAnswers} /> */}
+                        exercises={this.props.langOne.exercises}
+                        totalCorrect={this.props.langOne.totalCorrect}
+                        showScore={this.props.langOne.showScore}
+                        showAnswers={this.props.showAnswers}
+                        checkScore={this.props.onMorphologyCheckScore}
+                        lang="langOne" />
                 </Modal>  
                 <Modal 
-                    show={this.state.kurdish} 
+                    show={this.state.showLangTwo} 
                     modalClosed={this.modalClosedHandler}>
-                    {/* <FillInBlanks 
-                        title="Transcribing American English Vowels"
-                        instructions="Transcribe just the vowel in these words. Transcriptions without square brackets will be marked incorrect. Ex. up [ʌ]."
+                    <h1>{this.props.langTwo.name}</h1>
+                    <h3>{this.props.langTwo.languageFamily}</h3>
+                    <p>{this.props.langTwo.instructions}</p>
+                    <ExampleData exampleData={this.props.langTwo.exampleData} />
+                    <QuestionAndFill 
+                        exerciseTask1={this.props.langTwo.task1}
+                        exerciseTask2={this.props.langTwo.task2}
+                        startIndex={this.props.langTwo.reverseTranscriptionStartIndex}
+                        exercises={this.props.langTwo.exercises}
+                        inputChanged={this.props.onMorphologyInputChanged}
+                        showAnswers={this.props.showAnswers}
+                        lang="langTwo" />
+                    <ModalButtons
                         closed={this.modalClosedHandler}
-                        exercises={this.props.engIpaExercises}
-                        totalCorrect={this.props.engIpaTotalCorrect}
-                        validAnswers={this.props.engIpaValidAnswers}
-                        showScore={this.props.engIpaShowScore}
-                        inputChanged={this.props.onEngIpaInputChanged}
-                        checkScore={this.props.onEngIpaCheckScore}
-                        showAnswers={this.props.showAnswers} /> */}
+                        exercises={this.props.langTwo.exercises}
+                        totalCorrect={this.props.langTwo.totalCorrect}
+                        showScore={this.props.langTwo.showScore}
+                        showAnswers={this.props.showAnswers}
+                        checkScore={this.props.onMorphologyCheckScore}
+                        lang="langTwo" />
                 </Modal>  
+                
             </div>
         );
     }
 }
 
-export default Morphology;
+const mapStateToProps = (state) => {
+    return {
+        langOne: state.morphology.langOne,
+        langTwo: state.morphology.langTwo,
+        showAnswers: state.morphology.showAnswers
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onMorphologyInputChanged: (value, inputIndex, lang) => dispatch(actions.morphologyInputChanged(value, inputIndex, lang)),
+        onMorphologyCheckScore: (lang) => dispatch(actions.morphologyCheckScore(lang)),
+        loadMorphologyData: () => dispatch(actions.loadMorphologyData())
+    };
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Morphology);

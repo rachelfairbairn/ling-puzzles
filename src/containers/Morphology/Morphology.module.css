@@ -9,10 +9,6 @@
     width: 200px;
 }
 
-.Flag {
-    width: 100%;
-}
-
 @media (min-width: 800px){
     .Morphology{
         width: 600px;

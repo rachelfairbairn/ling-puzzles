@@ -49,11 +49,11 @@
     background-color: #78C2AD;
 }
 
-.Flag {
+.Img {
     width: inherit;
     padding: 16px;
 }
 
-.Flag:hover {
+.Img:hover {
     background-color: #78C2AD;
 }

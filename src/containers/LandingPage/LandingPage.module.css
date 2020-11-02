@@ -1,0 +1,10 @@
+.LandingPageCard {
+    margin: 8px auto;
+    width: 90%;
+}
+
+@media(min-width: 700px){
+    .LandingPageCard {
+        width: 600px;
+    }
+}
