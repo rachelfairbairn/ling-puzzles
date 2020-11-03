@@ -7,7 +7,7 @@ const exampleData = (props) => {
     const dataRows = [];
     for(let i=0; i<keys.length; i+=2){
         dataRows.push(
-            <tr>
+            <tr key={i}>
                 <td className={classes.LeftCell}>{keys[i]}</td>
                 <td className={classes.RightCell}>"{props.exampleData[keys[i]]}"</td>
                 {(i < keys.length-1) ? 
@@ -23,7 +23,9 @@ const exampleData = (props) => {
     return (
         <div className={classes.ExampleData}>
             <table className={classes.Table}>
-                {dataRows}
+                <tbody>
+                    {dataRows}
+                </tbody>
             </table>
         </div>
     );

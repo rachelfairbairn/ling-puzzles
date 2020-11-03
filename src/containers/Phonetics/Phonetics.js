@@ -31,7 +31,7 @@ class Phonetics extends Component {
 
     componentDidMount() {
         if(this.props.engIpaExercises.length === 0){
-            this.props.loadExercises();
+            this.props.loadPhoneticsExercises();
         }
     }
 
@@ -147,7 +147,7 @@ const mapDispatchToProps = (dispatch) => {
         onIpaEngCheckScore: () => dispatch(actions.ipaEngCheckScore()),
         onVideoIpaInputChanged: (value, inputIndex) => dispatch(actions.videoIpaInputChanged(value, inputIndex)),
         onVideoIpaCheckScore: () => dispatch(actions.videoIpaCheckScore()),
-        loadExercises: () => dispatch(actions.loadExercises())
+        loadPhoneticsExercises: () => dispatch(actions.loadPhoneticsExercises())
     };
 };
 

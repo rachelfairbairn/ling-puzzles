@@ -2,7 +2,7 @@
     border: 1px solid black;
     border-radius: 5px;
     margin: 16px 0px;
-    padding: 8px;
+    padding: 2px;
 }
 
 .Task {
@@ -12,5 +12,6 @@
 @media(min-width: 600px){
     .QuestionAndFill {
         margin: 16px 8px;
+        padding: 8px;
     }
 }

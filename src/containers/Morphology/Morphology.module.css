@@ -1,6 +1,11 @@
 .Morphology {
     margin: auto;
-    width: 80%;
+    width: 100%;
+}
+
+.Instructions {
+    width: 85%;
+    margin: auto;
 }
 
 .LanguageCard {
@@ -9,8 +14,26 @@
     width: 200px;
 }
 
-@media (min-width: 800px){
-    .Morphology{
-        width: 600px;
+@media (min-width: 830px){
+    .Morphology {
+        width: 80%;
+    }
+    .Instructions {
+        width: 90%;
+    }
+}
+
+@media (min-width: 950px){
+    .Morphology {
+        width: 70%;
+    }
+    .Instructions {
+        width: 90%;
+    }
+}
+
+@media (min-width: 1450px){
+    .Morphology {
+        width: 60%;
     }
 }

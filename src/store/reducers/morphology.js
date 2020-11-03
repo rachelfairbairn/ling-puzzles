@@ -28,6 +28,71 @@ const initialState = {
         validAnswers: false,
         showScore: false
     },
+    langThree: {
+        name: "",
+        languageFamily: "",
+        instructions: "",
+        task1: "",
+        task2: "",
+        reverseTranscriptionStartIndex: 0,
+        exampleData: {},
+        exercises: [],
+        totalCorrect: 0,
+        validAnswers: false,
+        showScore: false
+    },
+    langFour: {
+        name: "",
+        languageFamily: "",
+        instructions: "",
+        task1: "",
+        task2: "",
+        reverseTranscriptionStartIndex: 0,
+        exampleData: {},
+        exercises: [],
+        totalCorrect: 0,
+        validAnswers: false,
+        showScore: false
+    },
+    langFive: {
+        name: "",
+        languageFamily: "",
+        instructions: "",
+        task1: "",
+        task2: "",
+        reverseTranscriptionStartIndex: 0,
+        exampleData: {},
+        exercises: [],
+        totalCorrect: 0,
+        validAnswers: false,
+        showScore: false
+    },
+    langSix: {
+        name: "",
+        languageFamily: "",
+        instructions: "",
+        task1: "",
+        task2: "",
+        reverseTranscriptionStartIndex: 0,
+        exampleData: {},
+        exercises: [],
+        totalCorrect: 0,
+        validAnswers: false,
+        showScore: false
+    },
+    bonus: {
+        name: "",
+        languageFamily: "",
+        instructions: "",
+        task1: "",
+        task2: "",
+        reverseTranscriptionStartIndex: 0,
+        exampleData: {},
+        exercises: [],
+        totalCorrect: 0,
+        validAnswers: false,
+        showScore: false
+    },
     showAnswers: false
 };
 
@@ -54,10 +119,70 @@ const loadMorphologyDataSuccess = (state, action) => {
                                             exampleData: action.data.langTwo.exampleData,
                                             exercises: action.data.langTwo.exercises
                                         });
+    let updatedLangThree = updateObject(state['langThree'], 
+                                        {
+                                            name: action.data.langThree.name,
+                                            languageFamily: action.data.langThree.languageFamily,
+                                            instructions: action.data.langThree.instructions,
+                                            task1: action.data.langThree.task1,
+                                            task2: action.data.langThree.task2,
+                                            reverseTranscriptionStartIndex: action.data.langThree.reverseTranscriptionStartIndex,
+                                            exampleData: action.data.langThree.exampleData,
+                                            exercises: action.data.langThree.exercises
+                                        });
+    let updatedLangFour = updateObject(state['langFour'], 
+                                        {
+                                            name: action.data.langFour.name,
+                                            languageFamily: action.data.langFour.languageFamily,
+                                            instructions: action.data.langFour.instructions,
+                                            task1: action.data.langFour.task1,
+                                            task2: action.data.langFour.task2,
+                                            reverseTranscriptionStartIndex: action.data.langFour.reverseTranscriptionStartIndex,
+                                            exampleData: action.data.langFour.exampleData,
+                                            exercises: action.data.langFour.exercises
+                                        });
+    let updatedLangFive = updateObject(state['langFive'], 
+                                        {
+                                            name: action.data.langFive.name,
+                                            languageFamily: action.data.langFive.languageFamily,
+                                            instructions: action.data.langFive.instructions,
+                                            task1: action.data.langFive.task1,
+                                            task2: action.data.langFive.task2,
+                                            reverseTranscriptionStartIndex: action.data.langFive.reverseTranscriptionStartIndex,
+                                            exampleData: action.data.langFive.exampleData,
+                                            exercises: action.data.langFive.exercises
+                                        });
+    let updatedLangSix = updateObject(state['langSix'], 
+                                        {
+                                            name: action.data.langSix.name,
+                                            languageFamily: action.data.langSix.languageFamily,
+                                            instructions: action.data.langSix.instructions,
+                                            task1: action.data.langSix.task1,
+                                            task2: action.data.langSix.task2,
+                                            reverseTranscriptionStartIndex: action.data.langSix.reverseTranscriptionStartIndex,
+                                            exampleData: action.data.langSix.exampleData,
+                                            exercises: action.data.langSix.exercises
+                                        });
+    let updatedBonus = updateObject(state['bonus'], 
+                                        {
+                                            name: action.data.bonus.name,
+                                            languageFamily: action.data.bonus.languageFamily,
+                                            instructions: action.data.bonus.instructions,
+                                            task1: action.data.bonus.task1,
+                                            task2: action.data.bonus.task2,
+                                            reverseTranscriptionStartIndex: action.data.bonus.reverseTranscriptionStartIndex,
+                                            exampleData: action.data.bonus.exampleData,
+                                            exercises: action.data.bonus.exercises
+                                        });
 
     let updatedState = updateObject(state, {
                                             langOne: updatedLangOne,
-                                            langTwo: updatedLangTwo
+                                            langTwo: updatedLangTwo,
+                                            langThree: updatedLangThree,
+                                            langFour: updatedLangFour,
+                                            langFive: updatedLangFive,
+                                            langSix: updatedLangSix,
+                                            bonus: updatedBonus
                                             }
                                     );
 

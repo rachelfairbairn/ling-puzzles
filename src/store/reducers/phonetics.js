@@ -23,7 +23,7 @@ const initialState = {
     showAnswers: false
 };
 
-const loadExercisesSuccess = (state, action) => {
+const loadPhoneticsExercisesSuccess = (state, action) => {
     let updatedExercises = updateObject(state['engIpa'], {exercises: Object.values(action.exercises['engIpa'])});
     let updatedState = updateObject(state, {engIpa: updatedExercises});
 
@@ -167,7 +167,7 @@ const togglePhoneticsAnswers = (state, action) => {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case actionTypes.LOAD_EXERCISES_SUCCESS: return loadExercisesSuccess(state, action);
+        case actionTypes.LOAD_PHONETICS_EXERCISES_SUCCESS: return loadPhoneticsExercisesSuccess(state, action);
         case actionTypes.ENG_IPA_INPUT_CHANGED: return engIpaInputChanged(state, action);
         case actionTypes.ENG_IPA_CHECK_SCORE: return engIpaCheckScore(state, action);
         case actionTypes.IPA_ENG_INPUT_CHANGED: return ipaEngInputChanged(state, action);

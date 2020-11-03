@@ -9,6 +9,7 @@ import Phonetics from './containers/Phonetics/Phonetics';
 import Morphology from './containers/Morphology/Morphology';
 import ActivityProgress from './containers/ActivityProgress/ActivityProgress';
 import AdminPage from './containers/AdminPage/AdminPage';
+import Acknowledgments from './components/Acknowledgments/Acknowledgments';
 
 class App extends Component {
 
@@ -20,6 +21,7 @@ class App extends Component {
         <Route path="/morphology" component={Morphology} />
         <Route path="/progress" component={ActivityProgress} />
         <Route path="/admin" component={AdminPage} />
+        <Route path="/acknowledgments" component={Acknowledgments} />
         <Route path="/" exact component={LandingPage} />
         <Redirect to="/" />
       </Switch>

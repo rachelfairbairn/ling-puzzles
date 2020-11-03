@@ -1,5 +1,5 @@
 export { 
-    loadExercises,
+    loadPhoneticsExercises,
     engIpaInputChanged, 
     engIpaCheckScore,
     ipaEngInputChanged,

@@ -43,18 +43,18 @@ export const videoIpaCheckScore = () => {
     };
 };
 
-export const loadExercisesSuccess = (exercises) => {
+export const loadPhoneticsExercisesSuccess = (exercises) => {
     return {
-        type: actionTypes.LOAD_EXERCISES_SUCCESS,
+        type: actionTypes.LOAD_PHONETICS_EXERCISES_SUCCESS,
         exercises: exercises
     };
 };
 
-export const loadExercises = () => {
+export const loadPhoneticsExercises = () => {
     return dispatch => {
         axios.get('/phonetics.json')
         .then(res => {
-            dispatch(loadExercisesSuccess(res.data));
+            dispatch(loadPhoneticsExercisesSuccess(res.data));
         })
         .catch(err => {
             console.log(err);

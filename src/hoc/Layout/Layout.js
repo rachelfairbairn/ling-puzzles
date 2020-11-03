@@ -34,15 +34,16 @@ class Layout extends Component {
                     closed={this.sideDrawerClosedHandler} 
                     auth={this.props.isAuthenticated} 
                     admin={this.props.isAdmin}
-                    showPhoneticsAnswers={this.props.showPhoneticsAnswers} />
+                    showProgress={this.props.showPhoneticsAnswers && this.props.showMorphologyAnswers} />
                 <Toolbar 
                     menuButtonClicked={this.menuButtonHandler}
                     auth={this.props.isAuthenticated} 
                     admin={this.props.isAdmin}
-                    showPhoneticsAnswers={this.props.showPhoneticsAnswers} />
+                    showProgress={this.props.showPhoneticsAnswers && this.props.showMorphologyAnswers} />
                 <main className={classes.Content}>
                     {this.props.children}
                 </main>
+                <div className={classes.Footer}>Last modified: November 2020</div>
             </Aux>
         );
    }
@@ -52,7 +53,8 @@ const mapStateToProps = (state) => {
     return {
         isAuthenticated: state.auth.isAuthenticated,
         isAdmin: state.auth.isAdmin,
-        showPhoneticsAnswers: state.phonetics.showPhoneticsAnswers
+        showPhoneticsAnswers: state.phonetics.showAnswers,
+        showMorphologyAnswers: state.morphology.showAnswers
     }
 }
 
