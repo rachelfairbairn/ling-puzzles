@@ -1,0 +1,39 @@
+.Morphology {
+    margin: auto;
+    width: 100%;
+}
+
+.Instructions {
+    width: 85%;
+    margin: auto;
+}
+
+.LanguageCard {
+    display: inline-block;
+    margin: 8px;
+    width: 200px;
+}
+
+@media (min-width: 830px){
+    .Morphology {
+        width: 80%;
+    }
+    .Instructions {
+        width: 90%;
+    }
+}
+
+@media (min-width: 950px){
+    .Morphology {
+        width: 70%;
+    }
+    .Instructions {
+        width: 90%;
+    }
+}
+
+@media (min-width: 1450px){
+    .Morphology {
+        width: 60%;
+    }
+}

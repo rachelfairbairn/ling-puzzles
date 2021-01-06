@@ -1,0 +1,10 @@
+.Acknowledgments {
+    margin: auto;
+    width: 75%;
+}
+
+@media(min-width:600px){
+    .Acknowledgments {
+        width: 500px;
+    }
+}

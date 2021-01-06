@@ -6,6 +6,7 @@ import Button from '../../components/UI/Button/Button';
 import Modal from '../../components/UI/Modal/Modal';
 import FillInBlanks from '../../components/FillInBlanks/FillInBlanks';
 import VideoActivity from '../../components/VideoActivity/VideoActivity';
+import ModalButtons from '../../components/ModalButtons/ModalButtons';
 import classes from './Phonetics.module.css';
 import * as actions from '../../store/actions/index';
 
@@ -30,7 +31,7 @@ class Phonetics extends Component {
 
     componentDidMount() {
         if(this.props.engIpaExercises.length === 0){
-            this.props.loadExercises();
+            this.props.loadPhoneticsExercises();
         }
     }
 
@@ -64,47 +65,56 @@ class Phonetics extends Component {
                 <Modal 
                     show={this.state.englishToIPA} 
                     modalClosed={this.modalClosedHandler}>
+                    <h1>Transcribing American English Vowels</h1>
+                    <p>Transcribe just the vowel in these words. Transcriptions without square brackets will be marked incorrect. Ex. up [ʌ].</p>
                     <FillInBlanks 
-                        title="Transcribing American English Vowels"
-                        instructions="Transcribe just the vowel in these words. Transcriptions without square brackets will be marked incorrect. Ex. up [ʌ]."
+                        exercises={this.props.engIpaExercises}                        
+                        validAnswers={this.props.engIpaValidAnswers}                        
+                        inputChanged={this.props.onEngIpaInputChanged}                        
+                        showAnswers={this.props.showAnswers} />
+                    <ModalButtons 
                         closed={this.modalClosedHandler}
                         exercises={this.props.engIpaExercises}
                         totalCorrect={this.props.engIpaTotalCorrect}
-                        validAnswers={this.props.engIpaValidAnswers}
                         showScore={this.props.engIpaShowScore}
-                        inputChanged={this.props.onEngIpaInputChanged}
-                        checkScore={this.props.onEngIpaCheckScore}
-                        showAnswers={this.props.showAnswers} />
+                        showAnswers={this.props.showAnswers}
+                        checkScore={this.props.onEngIpaCheckScore} />
                 </Modal>  
                 <Modal 
                     show={this.state.ipaToEnglish} 
                     modalClosed={this.modalClosedHandler}>
+                    <h1>Reverse Transcription</h1>
+                    <p>Read these transcribed words and write their English spellings. Ex. [ælviləɹ] alveolar.</p>                
                     <FillInBlanks 
-                        title="Reverse Transcription"
-                        instructions="Read these transcribed words and write their English spellings. Ex. [ælviləɹ] alveolar."
-                        closed={this.modalClosedHandler}
                         exercises={this.props.ipaEngExercises}
-                        totalCorrect={this.props.ipaEngTotalCorrect}
                         validAnswers={this.props.ipaEngValidAnswers}
-                        showScore={this.props.ipaEngShowScore}
                         inputChanged={this.props.onIpaEngInputChanged}
-                        checkScore={this.props.onIpaEngCheckScore}
                         showAnswers={this.props.showAnswers} />
+                    <ModalButtons 
+                        closed={this.modalClosedHandler}
+                        exercises={this.props.engIpaExercises}
+                        totalCorrect={this.props.engIpaTotalCorrect}
+                        showScore={this.props.engIpaShowScore}
+                        showAnswers={this.props.showAnswers}
+                        checkScore={this.props.onEngIpaCheckScore} />
                 </Modal>
                 <Modal 
                     show={this.state.videoToIPA} 
                     modalClosed={this.modalClosedHandler}>
+                    <h1>Transcribing by ear: American English sounds</h1>
+                    <p>View my pronunciation of these nonsense words; transcribe them in IPA. Transcriptions without square brackets will be marked incorrect. Ex. ruppickle [ɹʌpɪkəl].</p>
                     <VideoActivity
-                        title="Transcribing by ear: American English sounds"
-                        instructions="View my pronunciation of these nonsense words; transcribe them in IPA. Transcriptions without square brackets will be marked incorrect. Ex. ruppickle [ɹʌpɪkəl]."
-                        closed={this.modalClosedHandler}
                         exercises={this.props.videoIpaExercises}
-                        totalCorrect={this.props.videoIpaTotalCorrect}
                         validAnswers={this.props.videoIpaValidAnswers}
-                        showScore={this.props.videoIpaShowScore}
                         inputChanged={this.props.onVideoIpaInputChanged}
-                        checkScore={this.props.onVideoIpaCheckScore}
                         showAnswers={this.props.showAnswers} />
+                    <ModalButtons 
+                        closed={this.modalClosedHandler}
+                        exercises={this.props.engIpaExercises}
+                        totalCorrect={this.props.engIpaTotalCorrect}
+                        showScore={this.props.engIpaShowScore}
+                        showAnswers={this.props.showAnswers}
+                        checkScore={this.props.onEngIpaCheckScore} />
                 </Modal>
             </div>
         );
@@ -137,7 +147,7 @@ const mapDispatchToProps = (dispatch) => {
         onIpaEngCheckScore: () => dispatch(actions.ipaEngCheckScore()),
         onVideoIpaInputChanged: (value, inputIndex) => dispatch(actions.videoIpaInputChanged(value, inputIndex)),
         onVideoIpaCheckScore: () => dispatch(actions.videoIpaCheckScore()),
-        loadExercises: () => dispatch(actions.loadExercises())
+        loadPhoneticsExercises: () => dispatch(actions.loadPhoneticsExercises())
     };
 };
 

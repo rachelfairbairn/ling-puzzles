@@ -1,0 +1,437 @@
+langOne: {
+    name: "Zulu",
+    languageFamily: "(Bantu << Niger-Congo)",
+    instructions: "Consider the following nouns in Zulu and proceed to look for the recurring forms.",
+    task1: "What is the Zulu morpheme for:",
+    task2: "What is the English translation for:",
+    reverseTranscriptionStartIndex: 7,
+    exampleData: {
+        umfazi: "married woman",
+        umfani: "boy",
+        umzali: "parent",
+        umfundisi: "teacher",
+        umlimi: "farmer",
+        umdlali: "player",
+        abafazi: "married women",
+        abafani: "boys",
+        abazali: "parents",
+        ababazi: "carvers",
+        abalimi: "farmers",
+        abadlali: "players",
+        abafundi: "readers"
+    },
+    exercises: [
+        {
+            answer: 'um',
+            question: 'singular',
+            value: ''
+        }, 
+        {
+            answer: 'aba',
+            question: 'plural',
+            value: ''
+        }, 
+        {
+            answer: 'i',
+            question: 'Nominal (noun) suffix',
+            value: ''
+        }, 
+        {
+            answer: 'a',
+            question: 'Verbal suffix',
+            value: ''
+        }, 
+        {
+            answer: 'lim',
+            question: 'Bound root meaning "farm"',
+            value: ''
+        }, 
+        {
+            answer: 'fundis',
+            question: 'Bound root meaning "teach"',
+            value: ''
+        }, 
+        {
+            answer: 'dlal',
+            question: 'Bound root meaning "play"',
+            value: ''
+        }, 
+        {
+            answer: 'teachers',
+            question: 'abafundisi',
+            value: ''
+        }, 
+        {
+            answer: 'carver',
+            question: 'umbazi',
+            value: ''
+        }, 
+        {
+            answer: 'reader',
+            question: 'umfundi',
+            value: ''
+        }
+    ],
+    totalCorrect: 0,
+    validAnswers: false,
+    showScore: false
+},
+langTwo: {
+    name: "Cebuano",
+    languageFamily: "(Central Philippine << Austronesian)",
+    instructions: "Here are some nouns from the Philippine language Cebuano.",
+    task1: "What is the Cebuano translation for:",
+    task2: "What is the English translation for:",
+    reverseTranscriptionStartIndex: 4,
+    exampleData: {
+        sibwano: "a Cebuano",
+        ilokano: "an Ilocano",
+        inglis: "an Englishman",
+        bisaja: "a Visayan",
+        ininglis: "the English language",
+        tinagalog: "the Tagalog language",
+        inilokano: "the Ilocano language",
+        sinibwano: "the Cebuano language",
+        furanso: "A French person",
+        unagari: "A Hungarian person",
+        sinuwid: "The Swedish language",
+        italo: "An Italian person"
+    },
+    exercises: [
+        {
+            answer: 'in',
+            question: 'language (of)',
+            value: ''
+        }, 
+        {
+            answer: 'finuranso',
+            question: 'The french language',
+            value: ''
+        }, 
+        {
+            answer: 'suwid',
+            question: 'A Swedish person',
+            value: ''
+        }, 
+        {
+            answer: 'initalo',
+            question: 'The Italian language',
+            value: ''
+        }, 
+        {
+            answer: 'The Visayan language',
+            question: 'binisaja',
+            value: ''
+        }, 
+        {
+            answer: 'The Hungarian language',
+            question: 'inunagari',
+            value: ''
+        }, 
+        {
+            answer: 'A Tagalog person',
+            question: 'tagalog',
+            value: ''
+        }
+    ],
+    totalCorrect: 0,
+    validAnswers: false,
+    showScore: false
+},
+langThree: {
+    name: "Samoan",
+    languageFamily: "(Polynesian << Austronesian)",
+    instructions: "We mentioned the morphological process of reduplication—the formation of new words through the repetition of part or all of a word—which occurs in many languages. The following examples from Samoan illustrate this kind of morphological rule.",
+    task1: "What is the Samoan translation for:",
+    task2: "What is the English translation for:",
+    reverseTranscriptionStartIndex: 3,
+    exampleData: {       
+        manao: "he wishes",
+        matua: "he is old",
+        siva: "He dances",
+        punou: "he bends",
+        atamaki: "he is wise",
+        savali: "he travels",
+        laga: "he weaves",
+        mananao: "they wish",
+        matutua: "they are old",
+        malolosi: "they are strong",
+        punonou: "they bend",
+        atamamaki: "they are wise",
+        pepese: "they sing"
+    },
+    exercises: [
+        {
+            answer: 'lalaga',
+            question: 'They weave',
+            value: ''
+        }, 
+        {
+            answer: 'savavali',
+            question: 'They travel',
+            value: ''
+        }, 
+        {
+            answer: 'pese',
+            question: 'He sings',
+            value: ''
+        }, 
+        {
+            answer: 'He is strong',
+            question: 'Malosi',
+            value: ''
+        }, 
+        {
+            answer: 'They dance',
+            question: 'sisiva',
+            value: ''
+        }
+    ],
+    totalCorrect: 0,
+    validAnswers: false,
+    showScore: false
+},
+langFour: {
+    name: "Italian",
+    languageFamily: "(Italic << Indo-European)",
+    instructions: "One of the characteristics of Italian is that articles and adjectives have inflectional endings that mark agreement in gender (and number) with the nouns they modify. Based on this information, answer the questions that follow the list of Italian phrases.",
+    task1: "What is the Italian translation for:",
+    task2: "What is the English translation for:",
+    reverseTranscriptionStartIndex: 6,
+    exampleData: {              
+        un uomo: "a man",
+        un uomo robusto: "a robust man",
+        un uomo robustissimo: "a very robust man",
+        una donna robusta: "a robust woman",
+        un vino rosso: "a red wine",
+        una faccia: "a face",
+        un vento secco: "a dry wind"
+    },
+    exercises: [
+        {
+            answer: 'Un vino robusto',
+            question: 'A robust wine',
+            value: ''
+        }, 
+        {
+            answer: 'Una faccia rossissima',
+            question: 'A very red face',
+            value: ''
+        }, 
+        {
+            answer: 'Un vino seccissimo',
+            question: 'A very dry wine',
+            value: ''
+        }, 
+        {
+            answer: 'issim',
+            question: 'very',
+            value: ''
+        }, 
+        {
+            answer: 'a',
+            question: 'Feminine suffix',
+            value: ''
+        },
+        {
+            answer: 'o',
+            question: 'Masculine suffix',
+            value: ''
+        },
+        {
+            answer: 'A very robust woman',
+            question: 'Una donna robustissima',
+            value: ''
+        },
+        {
+            answer: 'A dry face',
+            question: 'Una faccia secca',
+            value: ''
+        }
+    ],
+    totalCorrect: 0,
+    validAnswers: false,
+    showScore: false
+},
+langFive: {
+    name: "Turkish",
+    languageFamily: "",
+    instructions: "The following is a list of words from Turkish. In Turkish, articles and morphemes indicating location are affixed to the noun.",
+    task1: "What is the Turkish morpheme for:",
+    task2: "What is the English translation for:",
+    reverseTranscriptionStartIndex: 5,
+    exampleData: {              
+        deniz: "an ocean",
+        evden: "from a house",
+        denize: "to an ocean",
+        evimden: "from my house",
+        denizin: "of an ocean",
+        denizimde: "in my ocean",
+        eve: "to a house",
+        elde: "in a hand"
+    },
+    exercises: [
+        {
+            answer: 'e',
+            question: 'to',
+            value: ''
+        }, 
+        {
+            answer: 'in',
+            question: 'of',
+            value: ''
+        }, 
+        {
+            answer: 'de',
+            question: 'in',
+            value: ''
+        }, 
+        {
+            answer: 'el',
+            question: 'hand',
+            value: ''
+        }, 
+        {
+            answer: 'im',
+            question: 'my',
+            value: ''
+        },
+        {
+            answer: 'In my house',
+            question: 'evimde',
+            value: ''
+        },
+        {
+            answer: 'To my hand',
+            question: 'elime',
+            value: ''
+        }
+    ],
+    totalCorrect: 0,
+    validAnswers: false,
+    showScore: false
+},
+langSix: {
+    name: "Chickasaw",
+    languageFamily: "",
+    instructions: "The following are some verb forms in Chickasaw, a member of the Muskogean family of languages spoken in south-central Oklahoma.",
+    task1: "What is the Chickasaw morpheme for:",
+    task2: "What is the English translation for:",
+    reverseTranscriptionStartIndex: 7,
+    exampleData: {                 
+        sachaaha: "I am tall",
+        chaaha: "he/she is tall",
+        chichaaha: "you are tall",
+        hoochaaha: "they are tall",
+        satikahbi: "I am tired",
+        chitikahbitok: "you were tired",
+        chichchokwa: "you are cold",
+        hopobatok: "he was hungry",
+        sahopoba: "I am hungry",
+        chokma: "he is good",
+        lakna: "it is  yellow",
+        shila: "he is skinny",
+        ikchokmo: "he isn’t good",
+        iklakno: "it isn’t yellow",
+        sipokni: "To be old"
+    },
+    exercises: [
+        {
+            answer: 'chaaha',
+            question: 'To be tall',
+            value: ''
+        }, 
+        {
+            answer: 'tikahbi',
+            question: 'To be tired',
+            value: ''
+        }, 
+        {
+            answer: 'lakn',
+            question: 'To be yellow',
+            value: ''
+        }, 
+        {
+            answer: 'chokm',
+            question: 'good',
+            value: ''
+        }, 
+        {
+            answer: 'sa',
+            question: 'I',
+            value: ''
+        },
+        {
+            answer: 'chi',
+            question: 'you',
+            value: ''
+        },
+        {
+            answer: 'hoosipokni',
+            question: 'They are old',
+            value: ''
+        },
+        {
+            answer: 'He is not skinny',
+            question: 'ikshilmo',
+            value: ''
+        },
+        {
+            answer: 'They were hungry',
+            question: 'hoohopobatok',
+            value: ''
+        },
+        {
+            answer: 'He was old',
+            question: 'sipoknitok',
+            value: ''
+        }
+    ],
+    totalCorrect: 0,
+    validAnswers: false,
+    showScore: false
+},
+bonus: {
+    name: "Bonus Question",
+    languageFamily: "",
+    instructions: "For each morphological rule, fill in the corresponding language. (Zulu, Cebuano, Samoan, Italian, Turkish, Chickasaw)",
+    task1: "Which language matches the morphological rule:",
+    task2: "",
+    reverseTranscriptionStartIndex: 0,
+    exampleData: {},
+    exercises: [
+        {
+            answer: 'Zulu',
+            question: 'Attach a prefix to indicate number on nouns',
+            value: ''
+        }, 
+        {
+            answer: 'Italian',
+            question: 'The  gender suffixes on the noun and adjective must agree',
+            value: ''
+        }, 
+        {
+            answer: 'Chickasaw',
+            question: 'To negate an adjective, add a circumfix',
+            value: ''
+        }, 
+        {
+            answer: 'Samoan',
+            question: 'Reduplicate the next to the last syllable to form a plural verb',
+            value: ''
+        }, 
+        {
+            answer: 'Cebuano',
+            question: 'Insert an infix before the first vowel to form the language name',
+            value: ''
+        },
+        {
+            answer: 'Turkish',
+            question: 'Suffix on nouns is equivalent to English prepositions',
+            value: ''
+        }
+    ],
+    totalCorrect: 0,
+    validAnswers: false,
+    showScore: false
+}

@@ -1,7 +1,7 @@
 .Button {
     background-color: transparent;
     border: 1px solid black;
-    color: white;
+    /* color: white; */
     outline: none;
     cursor: pointer;
     font: inherit;
@@ -46,5 +46,14 @@
 
 .Info:hover {
     color: white;
+    background-color: #78C2AD;
+}
+
+.Img {
+    width: inherit;
+    padding: 16px;
+}
+
+.Img:hover {
     background-color: #78C2AD;
 }

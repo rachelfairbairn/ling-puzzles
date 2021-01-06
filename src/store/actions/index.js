@@ -1,13 +1,20 @@
 export { 
-    loadExercises,
+    loadPhoneticsExercises,
     engIpaInputChanged, 
     engIpaCheckScore,
     ipaEngInputChanged,
     ipaEngCheckScore,
     videoIpaInputChanged,
     videoIpaCheckScore,
-    togglePhoneticsAnswers
+    togglePhoneticsAnswers,
  } from './phonetics';
+
+ export {
+    loadMorphologyData,
+    morphologyInputChanged,
+    morphologyCheckScore,
+    toggleMorphologyAnswers
+ } from './morphology';
 
  export {
      auth

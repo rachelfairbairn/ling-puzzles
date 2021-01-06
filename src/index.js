@@ -10,11 +10,13 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import phoneticsReducer from './store/reducers/phonetics';
 import authReducer from './store/reducers/auth';
+import morphologyReducer from './store/reducers/morphology';
 
 const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose ;
 
 const rootReducer = combineReducers({
   phonetics: phoneticsReducer,
+  morphology: morphologyReducer,
   auth: authReducer
 });
 

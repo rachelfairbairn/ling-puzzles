@@ -1,0 +1,17 @@
+.QuestionAndFill {
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 16px 0px;
+    padding: 2px;
+}
+
+.Task {
+    font-weight: bold;
+}
+
+@media(min-width: 600px){
+    .QuestionAndFill {
+        margin: 16px 8px;
+        padding: 8px;
+    }
+}
