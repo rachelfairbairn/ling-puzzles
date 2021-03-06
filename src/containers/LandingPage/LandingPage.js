@@ -18,6 +18,11 @@ class LandingPage extends Component{
         invalidPassword: false
     }
 
+    componentDidMount() {
+        this.props.loadPhoneticsExercises();
+        this.props.loadMorphologyData();
+    }
+
     inputChangedHandler = (event) => {
         this.setState({inputValue: event.target.value});
     }
@@ -33,26 +38,30 @@ class LandingPage extends Component{
                 <Header type="h1">Welcome to Ling Puzzles!</Header>
                 { (this.props.isAuthenticated) ? 
                 <Aux>
-                    <div className={classes.LandingPageCard}>                        
-                        <Button 
-                        btnType="Img"
-                        clicked={() => this.props.history.push('/phonetics')}>
-                            <p style={{fontSize:"1.5em",
-                                        margin:"4px"}}>PHONETICS</p>
-                            <br/>
-                            <img style={{width:"100%"}} src={phoneticsImagePath} alt="phonetics comic" />
-                        </Button>
-                    </div>
-                    <div className={classes.LandingPageCard}>                        
-                        <Button 
-                        btnType="Img"
-                        clicked={() => this.props.history.push('/morphology')}>
-                            <p style={{fontSize:"1.5em",
-                                        margin:"4px"}}>MORPHOLOGY</p>
-                            <br/>
-                            <img style={{width:"100%"}} src={morphologyImagePath} alt="morphology comic" />                        
-                        </Button>
-                    </div>
+                    { this.props.showPhonetics ? 
+                        <div className={classes.LandingPageCard}>                        
+                            <Button 
+                            btnType="Img"
+                            clicked={() => this.props.history.push('/phonetics')}>
+                                <p style={{fontSize:"1.5em",
+                                            margin:"4px"}}>PHONETICS</p>
+                                <br/>
+                                <img style={{width:"100%"}} src={phoneticsImagePath} alt="phonetics comic" />
+                            </Button>
+                        </div>
+                    : null }
+                    { this.props.showMorphology ?
+                        <div className={classes.LandingPageCard}>                        
+                            <Button 
+                            btnType="Img"
+                            clicked={() => this.props.history.push('/morphology')}>
+                                <p style={{fontSize:"1.5em",
+                                            margin:"4px"}}>MORPHOLOGY</p>
+                                <br/>
+                                <img style={{width:"100%"}} src={morphologyImagePath} alt="morphology comic" />                        
+                            </Button>
+                        </div>      
+                    : null }
                 </Aux> :
                 <Aux>
                     <p>Please enter the password to continue.</p>
@@ -78,13 +87,17 @@ class LandingPage extends Component{
 const mapStateToProps = (state) => {
     return {
         isAuthenticated: state.auth.isAuthenticated,
-        errorMsg: state.auth.errorMsg
+        errorMsg: state.auth.errorMsg,
+        showPhonetics: state.phonetics.show,
+        showMorphology: state.morphology.show
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onAuth: (password) => dispatch(actions.auth(password))
+        onAuth: (password) => dispatch(actions.auth(password)),
+        loadMorphologyData: () => dispatch(actions.loadMorphologyData()),
+        loadPhoneticsExercises: () => dispatch(actions.loadPhoneticsExercises())
     };
 };
 

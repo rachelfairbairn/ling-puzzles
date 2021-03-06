@@ -41,3 +41,9 @@ export const toggleMorphologyAnswers = () => {
         type: actionTypes.TOGGLE_MORPHOLOGY_ANSWERS
     };
 };
+
+export const toggleMorphology = () => {
+    return {
+        type: actionTypes.TOGGLE_MORPHOLOGY
+    };
+};

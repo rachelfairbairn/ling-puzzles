@@ -93,7 +93,8 @@ const initialState = {
         validAnswers: false,
         showScore: false
     },
-    showAnswers: false
+    showAnswers: false,
+    show: true
 };
 
 const loadMorphologyDataSuccess = (state, action) => {
@@ -186,13 +187,9 @@ const loadMorphologyDataSuccess = (state, action) => {
                                             }
                                     );
 
-    // updatedExercises = updateObject(state['ipaEng'], {exercises: Object.values(action.exercises['ipaEng'])});
-    // updatedState = updateObject(updatedState, {ipaEng: updatedExercises});
-
-    // updatedExercises = updateObject(state['videoIpa'], {exercises: Object.values(action.exercises['videoIpa'])});
-    // updatedState = updateObject(updatedState, {videoIpa: updatedExercises});
-
-    return updateObject(updatedState, {showAnswers: action.data.showAnswers});
+    updatedState = updateObject(updatedState, {showAnswers: action.data.showAnswers});
+    
+    return updateObject(updatedState, {show: action.data.show});
 };
 
 const morphologyInputChanged = (state, action) => {
@@ -242,11 +239,19 @@ const toggleMorphologyAnswers = (state, action) => {
     });
 };
 
+
+const toggleMorphology = (state, action) => {
+    return updateObject(state, {
+        show: !state.show
+    });
+};
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.MORPHOLOGY_INPUT_CHANGED: return morphologyInputChanged(state, action);
         case actionTypes.MORPHOLOGY_CHECK_SCORE: return morphologyCheckScore(state, action);
         case actionTypes.TOGGLE_MORPHOLOGY_ANSWERS: return toggleMorphologyAnswers(state, action);
+        case actionTypes.TOGGLE_MORPHOLOGY: return toggleMorphology(state, action);
         case actionTypes.LOAD_MORPHOLOGY_DATA_SUCCESS: return loadMorphologyDataSuccess(state, action);
         default: return state;
     }

@@ -20,7 +20,12 @@ const sideDrawer = (props) => {
                     <Logo />
                 </div>
                 <nav>
-                    <NavItems auth={props.auth} admin={props.admin} showProgress={props.showProgress} />
+                    <NavItems 
+                        auth={props.auth} 
+                        admin={props.admin} 
+                        showProgress={props.showProgress}
+                        showPhonetics={props.showPhonetics}
+                        showMorphology={props.showMorphology} />
                 </nav>
             </div>
         </Aux>
