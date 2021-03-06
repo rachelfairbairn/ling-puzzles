@@ -20,7 +20,8 @@ const initialState = {
         validAnswers: false,
         showScore: false
     },
-    showAnswers: false
+    showAnswers: false,
+    show: true
 };
 
 const loadPhoneticsExercisesSuccess = (state, action) => {
@@ -33,7 +34,8 @@ const loadPhoneticsExercisesSuccess = (state, action) => {
     updatedExercises = updateObject(state['videoIpa'], {exercises: Object.values(action.exercises['videoIpa'])});
     updatedState = updateObject(updatedState, {videoIpa: updatedExercises});
 
-    return updateObject(updatedState, {showAnswers: action.exercises['showAnswers']});
+    updatedState = updateObject(updatedState, {showAnswers: action.exercises['showAnswers']});
+    return updateObject(updatedState, {show: action.exercises['show']});
 };
 
 const engIpaInputChanged = (state, action) => {
@@ -165,6 +167,12 @@ const togglePhoneticsAnswers = (state, action) => {
     });
 };
 
+const togglePhonetics = (state, action) => {
+    return updateObject(state, {
+        show: !state.show
+    });
+};
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.LOAD_PHONETICS_EXERCISES_SUCCESS: return loadPhoneticsExercisesSuccess(state, action);
@@ -175,6 +183,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.VIDEO_IPA_INPUT_CHANGED: return videoIpaInputChanged(state, action);
         case actionTypes.VIDEO_IPA_CHECK_SCORE: return videoIpaCheckScore(state, action);
         case actionTypes.TOGGLE_PHONETICS_ANSWERS: return togglePhoneticsAnswers(state, action);
+        case actionTypes.TOGGLE_PHONETICS: return togglePhonetics(state, action);
         default: return state;
     }
 };

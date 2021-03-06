@@ -49,8 +49,8 @@ class Phonetics extends Component {
                     <li>Type the transcription of the word into the transcription box by selecting the correct symbol from the charts.</li>
                     <li>Then copy/paste the entire transcription into the answer field.</li>
                     <li>Transcriptions without square brackets will be marked incorrect.</li>
-                    <li>You may want to record or screenshot your answers in order to compare with the answer key when it's released.</li>
-                    <li>Save a PDF of your scores on the Progress page and upload it to the activity forum.</li>
+                    <li>You may want to record or screenshot your answers because closing or refreshing the page will clear your entries.</li>
+                    <li>Once you have completed all three activities, navigate to the “progress” page and save your progress by either taking a screenshot or printing (ctrl+P) and saving as a PDF.  Upload this Screenshot or PDF to the Activity 2.2 Forum.</li>
                     <li style={{color:'red'}}>Closing or refreshing the page will clear your entries.</li>
                 </ul>
                 <Button 
@@ -71,7 +71,9 @@ class Phonetics extends Component {
                         exercises={this.props.engIpaExercises}                        
                         validAnswers={this.props.engIpaValidAnswers}                        
                         inputChanged={this.props.onEngIpaInputChanged}                        
-                        showAnswers={this.props.showAnswers} />
+                        showAnswers={this.props.showAnswers}
+                        startIndex={0}
+                        lang={""} />
                     <ModalButtons 
                         closed={this.modalClosedHandler}
                         exercises={this.props.engIpaExercises}
@@ -89,20 +91,26 @@ class Phonetics extends Component {
                         exercises={this.props.ipaEngExercises}
                         validAnswers={this.props.ipaEngValidAnswers}
                         inputChanged={this.props.onIpaEngInputChanged}
-                        showAnswers={this.props.showAnswers} />
+                        showAnswers={this.props.showAnswers}
+                        startIndex={0}
+                        lang={""} />
                     <ModalButtons 
                         closed={this.modalClosedHandler}
-                        exercises={this.props.engIpaExercises}
-                        totalCorrect={this.props.engIpaTotalCorrect}
-                        showScore={this.props.engIpaShowScore}
+                        exercises={this.props.ipaEngExercises}
+                        totalCorrect={this.props.ipaEngTotalCorrect}
+                        showScore={this.props.ipaEngShowScore}
                         showAnswers={this.props.showAnswers}
-                        checkScore={this.props.onEngIpaCheckScore} />
+                        checkScore={this.props.onIpaEngCheckScore} />
                 </Modal>
                 <Modal 
                     show={this.state.videoToIPA} 
                     modalClosed={this.modalClosedHandler}>
                     <h1>Transcribing by ear: American English sounds</h1>
-                    <p>View my pronunciation of these nonsense words; transcribe them in IPA. Transcriptions without square brackets will be marked incorrect. Ex. ruppickle [ɹʌpɪkəl].</p>
+                    <p>
+                        View my pronunciation of these words; transcribe the initial sound in the word in IPA. 
+                        Don’t forget to enclose your transcriptions in square brackets to distinguish them 
+                        from spellings. Ex. <a href="https://youtu.be/LM-zMi4Hz48" target="_blank">Sample Word</a> [k]
+                    </p>
                     <VideoActivity
                         exercises={this.props.videoIpaExercises}
                         validAnswers={this.props.videoIpaValidAnswers}
@@ -110,11 +118,11 @@ class Phonetics extends Component {
                         showAnswers={this.props.showAnswers} />
                     <ModalButtons 
                         closed={this.modalClosedHandler}
-                        exercises={this.props.engIpaExercises}
-                        totalCorrect={this.props.engIpaTotalCorrect}
-                        showScore={this.props.engIpaShowScore}
+                        exercises={this.props.videoIpaExercises}
+                        totalCorrect={this.props.videoIpaTotalCorrect}
+                        showScore={this.props.videoIpaShowScore}
                         showAnswers={this.props.showAnswers}
-                        checkScore={this.props.onEngIpaCheckScore} />
+                        checkScore={this.props.onVideoIpaCheckScore} />
                 </Modal>
             </div>
         );

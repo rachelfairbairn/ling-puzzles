@@ -7,13 +7,15 @@ export {
     videoIpaInputChanged,
     videoIpaCheckScore,
     togglePhoneticsAnswers,
+    togglePhonetics
  } from './phonetics';
 
  export {
     loadMorphologyData,
     morphologyInputChanged,
     morphologyCheckScore,
-    toggleMorphologyAnswers
+    toggleMorphologyAnswers,
+    toggleMorphology
  } from './morphology';
 
  export {

@@ -516,6 +516,20 @@ class AdminPage extends Component {
         this.props.onToggleMorphologyAnswers();
     }
 
+    togglePhoneticsHandler = () => {
+        axios.patch('https://ling-puzzles.firebaseio.com/phonetics.json', {show: !this.props.showPhonetics})
+        .then(res => console.log(res.data))
+        .catch(err => console.log(err));
+        this.props.onTogglePhonetics();
+    }
+
+    toggleMorphologyHandler = () => {
+        axios.patch('https://ling-puzzles.firebaseio.com/morphology.json', {show: !this.props.showMorphology})
+        .then(res => console.log(res.data))
+        .catch(err => console.log(err));
+        this.props.onToggleMorphology();
+    }
+
     inputChangedHandler(event, inputIdentifier) {
         this.setState({
             [inputIdentifier]: event.target.value
@@ -559,6 +573,20 @@ class AdminPage extends Component {
                         {this.props.showMorphologyAnswers ? 'HIDE MORPHOLOGY ANSWERS' : 'SHOW MORPHOLOGY ANSWERS'}
                     </Button>
                 </div>
+                <div>
+                    <Button 
+                        btnType={this.props.showPhonetics ? "Danger" : "Success"} 
+                        clicked={this.togglePhoneticsHandler}>
+                        {this.props.showPhonetics ? 'HIDE PHONETICS TAB' : 'SHOW PHONETICS TAB'}
+                    </Button>
+                </div>
+                <div>
+                    <Button 
+                        btnType={this.props.showMorphology ? "Danger" : "Success"} 
+                        clicked={this.toggleMorphologyHandler}>
+                        {this.props.showMorphology ? 'HIDE MORPHOLOGY TAB' : 'SHOW MORPHOLOGY TAB'}
+                    </Button>
+                </div>
                 {/* <Button 
                     btnType="Success" 
                     clicked={() => this.addMorphology()}>ADD MORPHOLOGY</Button> */}
@@ -571,6 +599,8 @@ const mapStateToProps = (state) => {
     return {
         showPhoneticsAnswers: state.phonetics.showAnswers,
         showMorphologyAnswers: state.morphology.showAnswers,
+        showPhonetics: state.phonetics.show,
+        showMorphology: state.morphology.show,
         engIpaExercises: state.phonetics.engIpa.exercises,
         langOne: state.morphology.langOne
     }
@@ -580,6 +610,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onTogglePhoneticsAnswers: () => dispatch(actions.togglePhoneticsAnswers()),
         onToggleMorphologyAnswers: () => dispatch(actions.toggleMorphologyAnswers()),
+        onTogglePhonetics: () => dispatch(actions.togglePhonetics()),
+        onToggleMorphology: () => dispatch(actions.toggleMorphology()),
         loadMorphologyData: () => dispatch(actions.loadMorphologyData()),
         loadPhoneticsExercises: () => dispatch(actions.loadPhoneticsExercises())
     }

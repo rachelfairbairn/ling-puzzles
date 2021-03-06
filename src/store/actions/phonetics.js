@@ -67,3 +67,9 @@ export const togglePhoneticsAnswers = () => {
         type: actionTypes.TOGGLE_PHONETICS_ANSWERS
     };
 };
+
+export const togglePhonetics = () => {
+    return {
+        type: actionTypes.TOGGLE_PHONETICS
+    };
+};
